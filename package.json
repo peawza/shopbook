@@ -1,0 +1,18 @@
+{
+  "name": "php",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "font-awesome5": "^1.0.5",
+    "jquery": "^3.4.1",
+    "jquery-validation": "^1.19.1",
+    "popper.js": "^1.16.0"
+  }
+}
