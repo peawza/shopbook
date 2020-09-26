@@ -1,5 +1,5 @@
 <?php
-require_once('condbbook.php');
+require_once('connect.php');
 
 if (isset($_POST['submitUpdateUser']) && isset($_SESSION['ID'])) {
     //echo 'มี';

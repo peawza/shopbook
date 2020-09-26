@@ -26,7 +26,7 @@ if (isset($_POST['submitRegister'])) {
             $hashed_password = password_hash($_POST['password1'], PASSWORD_DEFAULT);
             //ด้าต้าเบส
             $sql_create = "INSERT INTO `user` ( `User_Username`, `User_Password`, 
-            `User_Firstname`, `User_Lastname`, `User_Telephonenumber`, `User_Email`, `User_Createdate`,`User_Photo`, `User_Type`) 
+            `User_Firstname`, `User_Lastname`, `User_Telephonenumber`, `User_Email`, `User_Createdate`, `User_Type`) 
                                         VALUES ('" . $_POST['user'] . "', 
                                         '" . $hashed_password . "', 
                                         '" . $_POST['fname'] . "', 
@@ -34,7 +34,7 @@ if (isset($_POST['submitRegister'])) {
                                         '" . $_POST['phone'] . "', 
                                         '" . $_POST['email'] . "', 
                                         '" . date("Y-m-d") . "',
-                                        'profile.png','user');";
+                                        'user');";
             /*
 
 

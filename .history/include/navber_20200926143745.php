@@ -40,13 +40,12 @@
                         while ($row = mysqli_fetch_array($resultTypeproduct)) {
                             //echo $row["Type_ID"];
                             //  <a href="php/delete.php?Warranty_ID=<?php
-                                                                    // echo $row["Warranty_ID"];                           
-                                                                    //<i class=" fas fa-trash-alt"></i></a>
-                                                                    //shopproduct.php?typeproduct= <?php echo $row["id"]; 
+                            // echo $row["Warranty_ID"];                           
+                            //<i class=" fas fa-trash-alt"></i></a>
+                            //shopproduct.php?typeproduct= <?php echo $row["id"]; 
 
-                                                                    //print_r($row);
-
-                                                                    ?>
+                            //print_r($row);
+                        ?>
 
 
 
@@ -57,7 +56,7 @@
 
 
                         <?php
-                        /*
+
                         }
                         */
                         ?>

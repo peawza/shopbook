@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 $conn = new mysqli('localhost', 'root', '1234', 'shopbook');
 $conn->set_charset("utf8");
 //$conn->query('set name utf8');

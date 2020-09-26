@@ -22,7 +22,6 @@ if (isset($_POST['submitlogin'])) {
     if (!empty($row)) {
         if (password_verify($password, $row['User_Password'])) {
             //echo 'ok';
-            // session_start();
 
             $_SESSION['ID'] = $row['User_ID']; // ต้องมี session_start(); ก่อน ****
             $_SESSION['Username'] = $row['User_Username'];
@@ -33,6 +32,7 @@ if (isset($_POST['submitlogin'])) {
             $_SESSION['UserType'] = $row['User_Type'];
             $_SESSION['Email'] = $row['User_Email'];
             header('location:../index.php');
+            session_start();
         } else {
             //echo 'ล้มเหลว';
             echo "<script> alert('รหัสผ่านผิด'); </script>";

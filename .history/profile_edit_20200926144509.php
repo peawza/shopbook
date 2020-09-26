@@ -106,7 +106,7 @@
             <div class="row ">
                 <div class="col">
                     <input type="text" class="form-control" placeholder="ชื่อ" maxlength="30"
-                        value="<?php echo $row['User_Firstname']; ?>" name="fname" id="fname">
+                        value="<?php echo $row['User_Firstname']; ?> " name="fname" id="fname">
 
                 </div>
                 <div class="col">

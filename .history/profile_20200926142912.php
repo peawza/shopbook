@@ -9,21 +9,22 @@
     ?>
     <title>Profile</title>
     <?php
-    //session_start();
-    require_once('php/condbbook.php');
-    include('include/navber.php');
+    session_start();
 
+
+    include('include/navber.php');
+    require_once('php/condbbook.php');
 
     if (!isset($_SESSION["ID"])) {
         header('location:index.php');
     }
-    //print_r($_SESSION);
+    print_r($_SESSION);
     $sql = "SELECT * FROM `user` WHERE `User_ID`= '" . $_SESSION["ID"] . "'"; // alt  + 96
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 
 
-    //echo $result->num_rows;
+    echo $result->num_rows;
     if (!$result->num_rows) {
         header('location:index.php');
     }

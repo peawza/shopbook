@@ -10,7 +10,7 @@
     ?>
     <title>Profile</title>
     <?php
-    //session_start();
+    session_start();
     require_once('php/condbbook.php');
     if (!isset($_SESSION["ID"])) {
         header('location:index.php');
@@ -19,7 +19,7 @@
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     //echo $result->num_rows;
-    //print_r($row);
+    print_r($row);
     if (!$result->num_rows) {
         header('location:index.php');
     }
@@ -43,18 +43,15 @@
     <div class="container">
         <div class="py-3">
 
-            <img src="img\profile\<?php echo $row['User_Photo']; ?>" alt="profile.png"
-                class="img-profile rounded-circle ">
+            <img src="img\profile\<?php echo $row['User_Photo']; ?>" alt="profile.png" class="img-profile rounded-circle ">
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn mx-auto d-block btn-primary" data-toggle="modal"
-                data-target="#exampleModal">
+            <button type="button" class="btn mx-auto d-block btn-primary" data-toggle="modal" data-target="#exampleModal">
                 เปลี่ยนรูปภาพ
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -66,14 +63,12 @@
                         <form action="php/updatephoto.php" method="POST" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="custom-file " data-callback=" PhotoChcallback">
-                                    <input type="file" class="custom-file-input profile-input" id="file"
-                                        aria-describedby="inputGroupFileAddon01" name="file">
+                                    <input type="file" class="custom-file-input profile-input" id="file" aria-describedby="inputGroupFileAddon01" name="file">
                                     <label class=" custom-file-label" for="inputGroupFile01">เลือกไฟล์</label>
                                 </div>
 
                                 <figure class="figure d-none  ">
-                                    <img id="imgprofile" alt="profile.png"
-                                        class="figure-img img-fluid rounded-circle mr-auto">
+                                    <img id="imgprofile" alt="profile.png" class="figure-img img-fluid rounded-circle mr-auto">
                                 </figure>
 
 
@@ -83,8 +78,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" name="submitphoto" id="submitphoto" class="btn btn-primary"
-                                    disabled>Save
+                                <button type="submit" name="submitphoto" id="submitphoto" class="btn btn-primary" disabled>Save
                                     changes</button>
                             </div>
 
@@ -105,13 +99,11 @@
             <label class="textprofile ">ชื่อของคุณ</label>
             <div class="row ">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="ชื่อ" maxlength="30"
-                        value="<?php echo $row['User_Firstname']; ?>" name="fname" id="fname">
+                    <input type="text" class="form-control" placeholder="ชื่อ" maxlength="30" value="<?php echo $row['User_Firstname']; ?> " name="fname" id="fname">
 
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="นามสกุล" id="lname"
-                        value="<?php echo $row['User_Lastname']; ?>" name="lname" maxlength="30">
+                    <input type="text" class="form-control" placeholder="นามสกุล" id="lname" value="<?php echo $row['User_Lastname']; ?>" name="lname" maxlength="30">
                 </div>
             </div>
 
@@ -119,21 +111,18 @@
             <div class="form-group">
 
                 <label class="textprofile">เบอร์โทร</label>
-                <input type="tel" class="form-control" id="phone" name="phone" placeholder="เบอร์โทร"
-                    value="<?php echo $row['User_Telephonenumber']; ?>">
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="เบอร์โทร" value="<?php echo $row['User_Telephonenumber']; ?>">
                 </input>
 
                 <div class=" form-group ">
                     <label class=" textprofile">อีเมล</label>
-                    <input type="email" class="form-control" id="email" name="email"
-                        value="<?php echo $row['User_Email']; ?> " placeholder="email@example.com">
+                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $row['User_Email']; ?> " placeholder="email@example.com">
                 </div>
 
                 <div class="container">
                     <div class="row py-4 ">
 
-                        <button type="submit" name="submitUpdateUser"
-                            class="btn btn-primary btn-lg col float-left">บันทึก</button>
+                        <button type="submit" name="submitUpdateUser" class="btn btn-primary btn-lg col float-left">บันทึก</button>
                         <div class="col"></div>
                         <a href="profile.php" class="btn btn-secondary btn-lg col float-right">
                             ยกเลิก

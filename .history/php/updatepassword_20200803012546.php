@@ -1,14 +1,12 @@
 <?php
 //session_start();
-require_once('condbbook.php');
+require_once('connect.php');
 echo $_SESSION['ID'];
 print_r($_POST);
 $username = $_SESSION['Username'];
 $password = $_POST['password'];
 $hashed_password = password_hash($_POST['password1'], PASSWORD_DEFAULT);
-echo ('<br>');
 echo $hashed_password;
-echo ('<br>');
 $sqlUpdate = "UPDATE `user` SET `User_Password` = '" . $hashed_password . "'  WHERE `User_ID` = '" . $_SESSION['ID'] . "' ";
 
 //UPDATE `user` SET `User_Password` = '5' WHERE `user`.`User_ID` = 10;
@@ -19,9 +17,7 @@ if (isset($_POST['submitUpdatepassword']) && isset($_SESSION['ID'])) {
     $sql = "SELECT * FROM `user` WHERE `User_ID`= '" . $_SESSION["ID"] . "'"; // alt  + 96
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
-    echo ('<br>');
     print_r($row);
-    echo ('<br>');
 
     if (password_verify($password, $row['User_Password'])) {
 
@@ -41,7 +37,7 @@ if (isset($_POST['submitUpdatepassword']) && isset($_SESSION['ID'])) {
         }
     } else {
         echo "<script> alert('รหัสผ่านไม่ตรงกับอันเก่า'); </script>";
-        //header('Refresh:0; url=../prodile_editpassword.php');
+        header('Refresh:0; url=../prodile_editpassword.php');
     }
 } else {
     header('location:../index.php');

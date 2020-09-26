@@ -10,7 +10,7 @@
     ?>
     <title>Profile</title>
     <?php
-    //session_start();
+    session_start();
     require_once('php/condbbook.php');
     if (!isset($_SESSION["ID"])) {
         header('location:index.php');
@@ -18,7 +18,7 @@
     $sql = "SELECT * FROM `user` WHERE `User_ID`= '" . $_SESSION["ID"] . "'"; // alt  + 96
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
-    //echo $result->num_rows;
+    echo $result->num_rows;
     //print_r($row);
     if (!$result->num_rows) {
         header('location:index.php');
@@ -106,7 +106,7 @@
             <div class="row ">
                 <div class="col">
                     <input type="text" class="form-control" placeholder="ชื่อ" maxlength="30"
-                        value="<?php echo $row['User_Firstname']; ?>" name="fname" id="fname">
+                        value="<?php echo $row['User_Firstname']; ?> " name="fname" id="fname">
 
                 </div>
                 <div class="col">

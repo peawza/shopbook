@@ -10,7 +10,7 @@
     ?>
     <title>Profile</title>
     <?php
-    require_once('php/condbbook.php');
+    require_once('php/connect.php');
     include('include/navber.php');
     //session_start();
 
@@ -40,8 +40,7 @@
     <div class="container">
         <div class="py-3">
 
-            <img src="img\profile\<?php echo $row['User_Photo']; ?>" alt="profile.png"
-                class="img-profile rounded-circle ">
+            <img src="img\profile\<?php echo $row['User_Photo']; ?>" alt="profile.png" class="img-profile rounded-circle ">
         </div>
     </div>
 
@@ -51,24 +50,20 @@
             <form class="form" id="Formupdatapassword" method="post" action="php/updatepassword.php">
                 <div class=" form-group ">
                     <label class=" textprofile">รหัสผ่านปัจจุบัน</label>
-                    <input type="password" class="form-control" id="password" name="password"
-                        placeholder="รหัสผ่านปัจจุบัน">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="รหัสผ่านปัจจุบัน">
                 </div>
                 <div class=" form-group ">
                     <label class=" textprofile">รหัสผ่านใหม่</label>
-                    <input type="password" class="form-control" id="password1" name="password1"
-                        placeholder="รหัสผ่านใหม่">
+                    <input type="password" class="form-control" id="password1" name="password1" placeholder="รหัสผ่านใหม่">
                 </div>
                 <div class=" form-group ">
                     <label class=" textprofile">ยืนยันรหัสผ่านใหม่</label>
-                    <input type="password" class="form-control" id="password2" name="password2"
-                        placeholder="ยืนยันรหัสผ่านใหม่">
+                    <input type="password" class="form-control" id="password2" name="password2" placeholder="ยืนยันรหัสผ่านใหม่">
                 </div>
 
                 <div class="container">
                     <div class="row py-4 ">
-                        <button type="submit" name="submitUpdatepassword"
-                            class="btn btn-primary btn-lg col float-left">บันทึก</button>
+                        <button type="submit" name="submitUpdatepassword" class="btn btn-primary btn-lg col float-left">บันทึก</button>
                         <div class="col"></div>
                         <a href="profile.php" class="btn btn-secondary btn-lg col float-right">
                             ยกเลิก

@@ -13,11 +13,9 @@
     require_once('php/condbbook.php');
     include('include/navber.php');
 
-
     if (!isset($_SESSION["ID"])) {
         header('location:index.php');
     }
-    //print_r($_SESSION);
     $sql = "SELECT * FROM `user` WHERE `User_ID`= '" . $_SESSION["ID"] . "'"; // alt  + 96
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
@@ -27,7 +25,6 @@
     if (!$result->num_rows) {
         header('location:index.php');
     }
-    //echo $_SESSION['Photo'];
 
     //print_r($row);
     ?>

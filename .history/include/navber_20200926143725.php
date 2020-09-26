@@ -28,25 +28,24 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item " href="shopproduct.php">สินค้าทั้งหมด</a>
-                        <?php/*
+                        <?php
                         $conn = new mysqli('localhost', 'root', '1234', 'shop');
                         $conn->set_charset("utf8");
-                        
+                        /*
                         
                         $selectTypeproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Type_ID` = '" . $_GET['typeproduct'] . "' ";
-                        
+                        */
                         $selectTypeproduct = "SELECT DISTINCT `product`.`Type_ID` , `producttype`.`Type_Name` FROM `product`,`producttype` WHERE `product`. `Type_ID`= `producttype`.`Type_ID` ORDER BY `product`.`Type_ID` ASC";
                         $resultTypeproduct = mysqli_query($conn, $selectTypeproduct);
                         while ($row = mysqli_fetch_array($resultTypeproduct)) {
                             //echo $row["Type_ID"];
                             //  <a href="php/delete.php?Warranty_ID=<?php
-                                                                    // echo $row["Warranty_ID"];                           
-                                                                    //<i class=" fas fa-trash-alt"></i></a>
-                                                                    //shopproduct.php?typeproduct= <?php echo $row["id"]; 
+                            // echo $row["Warranty_ID"];                           
+                            //<i class=" fas fa-trash-alt"></i></a>
+                            //shopproduct.php?typeproduct= <?php echo $row["id"]; 
 
-                                                                    //print_r($row);
-
-                                                                    ?>
+                            //print_r($row);
+                        ?>
 
 
 
@@ -57,9 +56,8 @@
 
 
                         <?php
-                        /*
+
                         }
-                        */
                         ?>
 
                     </div>

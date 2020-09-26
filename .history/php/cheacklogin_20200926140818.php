@@ -22,7 +22,6 @@ if (isset($_POST['submitlogin'])) {
     if (!empty($row)) {
         if (password_verify($password, $row['User_Password'])) {
             //echo 'ok';
-            // session_start();
 
             $_SESSION['ID'] = $row['User_ID']; // ต้องมี session_start(); ก่อน ****
             $_SESSION['Username'] = $row['User_Username'];

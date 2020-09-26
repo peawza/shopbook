@@ -9,10 +9,11 @@
     ?>
     <title>Profile</title>
     <?php
-    //session_start();
-    require_once('php/condbbook.php');
-    include('include/navber.php');
+    session_start();
 
+
+    include('include/navber.php');
+    require_once('php/condbbook.php');
 
     if (!isset($_SESSION["ID"])) {
         header('location:index.php');

@@ -34,7 +34,7 @@ if (isset($_POST['submitRegister'])) {
                                         '" . $_POST['phone'] . "', 
                                         '" . $_POST['email'] . "', 
                                         '" . date("Y-m-d") . "',
-                                        'profile.png','user');";
+                                        'user','user');";
             /*
 
 
