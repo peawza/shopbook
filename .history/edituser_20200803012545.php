@@ -1,5 +1,5 @@
 <?php
-require_once("php/condbbook.php");
+require_once("php/connect.php");
 $UserID = ($_GET["UserID"]);
 //$UserType = ($_GET["Userlevel"]);
 //echo $UserID;

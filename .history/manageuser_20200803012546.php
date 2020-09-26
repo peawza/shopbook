@@ -12,7 +12,7 @@
 </head>
 
 <?php
-require_once("php\condbbook.php");
+require_once("php/connect.php");
 
 $sql = "SELECT * FROM user";
 $query = mysqli_query($conn, $sql);
@@ -74,8 +74,7 @@ include('include/navber.php');
                                             <a href="php/deletuser.php?UserID=<?php
                                                                                     echo $result["User_ID"];
                                                                                     ?>" style="color:#000000">
-                                                <i class="fas fa-trash-alt"></i></a>
-                                        </td>
+                                                <i class="fas fa-trash-alt"></i></a> </td>
 
                             </form>
                             </tr>

@@ -16,7 +16,7 @@
 </head>
 
 <?php
-require_once("php/condbbook.php");
+require_once("php/connect.php");
 
 $sql = "SELECT * FROM producttype ORDER BY `Type_ID` DESC";
 $query = mysqli_query($conn, $sql);

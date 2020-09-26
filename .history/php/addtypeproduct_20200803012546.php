@@ -2,7 +2,7 @@
 //echo '<pre>', print_r($_POST), '</pre>';
 //echo $_POST['typeproduct'];
 
-require_once('condbbook.php');
+require_once('connect.php');
 $sqlinsert = "INSERT INTO `producttype` (`Type_Name`) VALUES ('" . $_POST['typeproduct'] . "');";
 function Refresh($link)
 {

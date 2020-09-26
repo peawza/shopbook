@@ -2,7 +2,7 @@
 
 
 
-require_once('condbbook.php');
+require_once('connect.php');
 
 if (isset($_GET['Ordersales_ID'])) {
     echo $_GET['Ordersales_ID'];

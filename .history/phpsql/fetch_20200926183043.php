@@ -1,6 +1,6 @@
 <?php
 //fetch.php  
-include('condbbookNs.php');
+include('condbbookNs');
 //$connect = mysqli_connect("localhost", "root", "1234", "shopbook");
 if (isset($_POST["typeproduct_id"])) {
      $query = "SELECT * FROM producttype WHERE `Type_ID` = '" . $_POST["typeproduct_id"] . "'";

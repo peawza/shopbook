@@ -1,5 +1,5 @@
 <?php
-require_once('condbbook.php');
+require_once('connect.php');
 $userid = $_GET['UserID'];
 echo $userid;
 

@@ -1,5 +1,5 @@
 <?php
-require_once('condbbook.php');
+require_once('connect.php');
 //echo $_POST['Formupdatauser'];
 
 print_r($_POST);
