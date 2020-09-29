@@ -290,7 +290,8 @@ print_r($_POST);
                                 value="<?php echo $_POST['addressuser'] ?>">
                             <input type="hidden" name="Totalprice" id="Totalprice" value="<?php echo $totaldelivery ?>">
                             <input type="hidden" name="phone" id="phone" value="<?php echo $_POST['numberphone'] ?>">
-
+                            <input type="hidden" name="nameusersend" id="nameusersend"
+                                value="<?php echo $_POST['nameproduct'] ?>">
                             <input type="hidden" name="UserID" id="UserID" value="<?php echo $_POST['UserID'] ?>">
                             <input type="hidden" name="tel" id="tel" value="<?php echo $_POST['numberphone'] ?>">
                         </div>

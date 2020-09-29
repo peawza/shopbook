@@ -44,7 +44,7 @@ Array ( [Delivery_ID] => 1
 //$rowselect = $resultselect->fetch_assoc();
 //print_r($rowselect);
 
-print_r($_POST);
+//print_r($_POST);
 
 
 
@@ -265,10 +265,11 @@ print_r($_POST);
                         <div class="modal-body">
 
                             <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-2 col-form-label py-2 ">username</label>
+                                <label for="inputPassword"
+                                    class="col-sm-2 col-form-label py-2 ">ชื่อผู้รับสินค้า</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="username"
-                                        value="<?php echo $_POST['name'] ?>" disabled>
+                                    <input type="text" class="form-control" id="nameproduct" name="nameproduct"
+                                        placeholder="ชื่อนามสกุล" value="<?php echo $_POST['nameproduct'] ?>" disabled>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -286,12 +287,36 @@ print_r($_POST);
                                         disabled>
                                 </div>
                             </div>
+
+                            <div class=" form-group row">
+                                <label for="exampleFormControlSelect1" class="py-2 col-sm-2">เลือกการจัดส่ง</label>
+                                <select class="form-control col-sm-5 mx-3" id="Delivery2" name="Delivery2" required
+                                    disabled>
+                                    <option value="" selected>กรุณาเลือกประเภทการจัดส่งสินค้า</option>
+
+                                    <?php
+                                        $selectDelivery = "SELECT `Delivery_ID`, `Delivery_Name`, `Delivery_Price` FROM `delivery`";
+                                        $resultDelivery = mysqli_query($conn, $selectDelivery);
+                                        while ($rowDelivery = mysqli_fetch_array($resultDelivery)) { ?>
+                                    <option value="<?php echo $rowDelivery["Delivery_ID"]; ?>" <?php if ($rowDelivery["Delivery_ID"] == $_POST['Delivery']) {
+                                                                                                            echo "selected='selected'";
+                                                                                                        } ?>>
+                                        <?php echo $rowDelivery["Delivery_Name"] . "   (" . $rowDelivery["Delivery_Price"] . ") บาท"; ?>
+                                    </option>
+
+                                    <?php
+                                        }
+                                        ?>
+
+                                </select>
+                            </div>
                             <input type="hidden" name="addressuser" id="addressuser"
                                 value="<?php echo $_POST['addressuser'] ?>">
+                            <input type="hidden" name="Delivery" id="Delivery" value="<?php echo $_POST['Delivery'] ?>">
                             <input type="hidden" name="Totalprice" id="Totalprice" value="<?php echo $totaldelivery ?>">
                             <input type="hidden" name="phone" id="phone" value="<?php echo $_POST['numberphone'] ?>">
-
-                            <input type="hidden" name="UserID" id="UserID" value="<?php echo $_POST['UserID'] ?>">
+                            <input type="hidden" name="nameusersend" id="nameusersend"
+                                value="<?php echo $_POST['nameproduct'] ?>">
                             <input type="hidden" name="tel" id="tel" value="<?php echo $_POST['numberphone'] ?>">
                         </div>
 
