@@ -161,7 +161,7 @@ if (isset($_POST['submitcart'])) {
                 //echo "สินค้าได้";
                 foreach ($_SESSION["shopping_cart"] as $keys => $values) {
                     unset($_SESSION["shopping_cart"][$keys]);
-                    echo '<script>window.location="../shopproduct.php"</script>';
+                    //echo '<script>window.location="../shopproduct.php"</script>';
                     //echo "<script> alert('บันทึกข้อมูลสำเสร็จ'); </script>";
                 }
             } else {

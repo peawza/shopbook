@@ -21,10 +21,10 @@ require_once('condbbook.php');
 
 
 if (isset($_POST['submitcart'])) {
-    //echo '<pre>';
-    //print_r($_SESSION);
-    //print_r($_POST);
-    //echo '</pre>';
+    echo '<pre>';
+    print_r($_SESSION);
+    print_r($_POST);
+    echo '</pre>';
 
     /*
     Array
@@ -85,9 +85,9 @@ if (isset($_POST['submitcart'])) {
 
 
         if (isset($resultinsertorder)) {
-            //echo 'บันทึกสำเร็จ';
+            echo 'บันทึกสำเร็จ';
         } else {
-            //echo 'บันทึกไม่สำเร็จ';
+            echo 'บันทึกไม่สำเร็จ';
         }
         //INSERT INTO `ordersalesdetail`(`ordersalesDetail_ID`, `product_ID`, `ordersalesDetail_unit`) VALUES ([value-1],[value-2],[value-3])
 
@@ -112,15 +112,15 @@ if (isset($_POST['submitcart'])) {
 
             $totalBalance = $rowselectproduct['Product_Balance'] - $values["item_quantity"];
 
-            //echo " ผลลัพ=" . $totalBalance;
-            //echo " ผลลัพ=" . $rowselectproduct['Product_rentday'];
+            echo " ผลลัพ=" . $totalBalance;
+            echo " ผลลัพ=" . $rowselectproduct['Product_rentday'];
             $day = $rowselectproduct['Product_rentday'];
             $daytotal = "+ " . $day . " day";
-            //echo ($daytotal);
-            //echo "<br>";
-            //echo Date("Y-m-d", strtotime($daytotal));
+            echo ($daytotal);
+            echo "<br>";
+            echo Date("Y-m-d", strtotime($daytotal));
             $returndate = Date("Y-m-d", strtotime($daytotal)); // 2013-02-28
-            //echo $returndate;
+            echo $returndate;
 
 
             $sumprice =  $values["item_price"] * $values["item_quantity"];
@@ -161,7 +161,7 @@ if (isset($_POST['submitcart'])) {
                 //echo "สินค้าได้";
                 foreach ($_SESSION["shopping_cart"] as $keys => $values) {
                     unset($_SESSION["shopping_cart"][$keys]);
-                    echo '<script>window.location="../shopproduct.php"</script>';
+                    //echo '<script>window.location="../shopproduct.php"</script>';
                     //echo "<script> alert('บันทึกข้อมูลสำเสร็จ'); </script>";
                 }
             } else {

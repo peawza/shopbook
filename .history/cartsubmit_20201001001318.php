@@ -7,52 +7,47 @@ require_once('php\condbbook.php');
 
 
 //$rowproduct = mysqli_fetch_array($resultproduct);
-/*
-echo '<pre>';
+
+//echo '<pre>';
 //print_r($resultproduct);
-$rowproduct = mysqli_fetch_array($resultproduct);
-print_r($rowproduct);
+//$rowproduct = mysqli_fetch_array($resultproduct);
+//print_r($rowproduct);
 //echo $rowproduct["Type_Name"];
 
-while ($rowproduct = mysqli_fetch_array($resultproduct)) {
-    echo "<br>";
-    echo ($rowproduct["Product_ID"]);
-}
-echo '</pre>';
-
-Array
-(
-    [nameproduct] => sadsazzz
-    [addressuser] => ฟฟฟฟฟฟฟ
-    [numberphone] => 0827957256
-    [Delivery] => 1
-    [Totalprice] => 700
-    [submitcart] => 
-)
-
-Array ( [Delivery_ID] => 1 
-[Delivery_Name] => EMS 
-[Delivery_Price] => 200 )
-
-*/
-//echo '<pre>';
+//while ($rowproduct = mysqli_fetch_array($resultproduct)) {
+//    echo "<br>";
+//    echo ($rowproduct["Product_ID"]);
+//}
 //print_r($_POST);
-//echo $_POST['Delivery'];
 //echo '</pre>';
-//$sqlselect = ("SELECT `Delivery_ID`, `Delivery_Name`, `Delivery_Price` FROM `delivery` WHERE `Delivery_ID` = '" . $_POST['Delivery'] . "' ");
-//$resultselect = $conn->query($sqlselect);
-//$rowselect = $resultselect->fetch_assoc();
-//print_r($rowselect);
-
-//print_r($_POST);
 
 
 
+
+
+$username = $_POST['name'];
+$password = $_POST['password'];
+$row;
+if (isset($_POST['submitusercart'])) {
+    echo '<pre>', print_r($_POST), '</pre>';
+
+    // echo $username;
+    //echo $password;
+
+    $username = $_POST['name'];
+    $password = $_POST['password'];
+
+    $stmt = $conn->prepare("SELECT * FROM user WHERE User_Username = ? ");
+    $stmt->bind_param('s', $username); // s - string  i- int b - bol 
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    global $row;
+
+    if (!empty($row)) {
+        if (password_verify($password, $row['User_Password'])) {
+            echo "<script> alert('ผ่าน'); </script>";
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,80 +61,80 @@ Array ( [Delivery_ID] => 1
     <?php
 
 
-    include('include\importcss.php');
-    include('include\navber.php');
+                include('include\importcss.php');
+                include('include\navber.php');
 
-    // echo '<pre>';
-    //print_r($_SESSION);
-    //echo '</pre>';
+                //echo '<pre>';
+                //print_r($_SESSION);
+                //echo '</pre>';
 
 
 
-    if (isset($_GET["action"])) {
-        if ($_GET["action"] == "delete") {
-            foreach ($_SESSION["shopping_cart"] as $keys => $values) {
-                if ($values["item_id"] == $_GET["id"]) {
-                    unset($_SESSION["shopping_cart"][$keys]);
-                    echo '<script>alert("Item Removed")</script>';
-                    echo '<script>window.location="cart.php"</script>';
-                }
-            }
-        }
-    }
-    if (isset($_GET["act"])) {
-
-        if (isset($_POST["updatecart"])) {
-            if ($_POST["updatecart"] == "updatecart") {
-                //echo '1234';
-                $id = 0;
-                $dataquantity = 0;
-
-                // name="quantity<?php echo $quantity++ 
-
-                foreach ($_SESSION["shopping_cart"] as $keys => $values) {
-                    if ($_SESSION["shopping_cart"][$keys]['item_id'] == $_POST["product_id" . $id++]) {
-
-                        $_SESSION['shopping_cart'][$keys]['item_quantity'] = $_POST['quantity' . $dataquantity++];
+                if (isset($_GET["action"])) {
+                    if ($_GET["action"] == "delete") {
+                        foreach ($_SESSION["shopping_cart"] as $keys => $values) {
+                            if ($values["item_id"] == $_GET["id"]) {
+                                unset($_SESSION["shopping_cart"][$keys]);
+                                echo '<script>alert("Item Removed")</script>';
+                                echo '<script>window.location="cart.php"</script>';
+                            }
+                        }
                     }
                 }
-            }
-        }
-        if (isset($_POST["deletecart"])) {
+                if (isset($_GET["act"])) {
 
-            if ($_POST["deletecart"] = 'deletecart') {
+                    if (isset($_POST["updatecart"])) {
+                        if ($_POST["updatecart"] == "updatecart") {
+                            //echo '1234';
+                            $id = 0;
+                            $dataquantity = 0;
 
-                $pc = 0;
-                foreach ($_SESSION["shopping_cart"] as $keys => $values) {
-                    unset($_SESSION["shopping_cart"][$keys]);
+                            // name="quantity<?php echo $quantity++ 
 
-                    echo '<script>window.location="shopproduct.php"</script>';
+                            foreach ($_SESSION["shopping_cart"] as $keys => $values) {
+                                if ($_SESSION["shopping_cart"][$keys]['item_id'] == $_POST["product_id" . $id++]) {
+
+                                    $_SESSION['shopping_cart'][$keys]['item_quantity'] = $_POST['quantity' . $dataquantity++];
+                                }
+                            }
+                        }
+                    }
+                    if (isset($_POST["deletecart"])) {
+
+                        if ($_POST["deletecart"] = 'deletecart') {
+
+                            $pc = 0;
+                            foreach ($_SESSION["shopping_cart"] as $keys => $values) {
+                                unset($_SESSION["shopping_cart"][$keys]);
+
+                                echo '<script>window.location="shopproduct.php"</script>';
+                            }
+                        }
+                    }
                 }
-            }
-        }
-    }
 
 
-    ?>
+                ?>
 
 
 
     <?php
-    $id = 0; //1
-    $name = 0; //2
-    $price = 0; //3                                        
-    $quantity = 0; //4
-    $photo = 0; //5
-    $Balance = 0; //6
+                $id = 0; //1
+                $name = 0; //2
+                $price = 0; //3                                        
+                $quantity = 0; //4
+                $photo = 0; //5
+                $Balance = 0; //6
 
 
 
-    ?>
+                ?>
 </head>
 
 
 <body>
     <?php if (!empty($_SESSION["shopping_cart"])) {
-    ?>
+                ?>
     <div class="container py-4">
 
         <div class="container">
@@ -163,14 +158,12 @@ Array ( [Delivery_ID] => 1
                 <div class="card-body">
                     <form action="?act=update" method="post">
                         <?php
-                            if (!empty($_SESSION["shopping_cart"])) {
-                                $total = 0;
-                                $totaldelivery = 0;
-
-                                $sumquantity = 0;
-                                $i = 0;
-                                foreach ($_SESSION["shopping_cart"] as $keys => $values) {
-                            ?>
+                                        if (!empty($_SESSION["shopping_cart"])) {
+                                            $total = 0;
+                                            $sumquantity = 0;
+                                            $i = 0;
+                                            foreach ($_SESSION["shopping_cart"] as $keys => $values) {
+                                        ?>
 
                         <!-- PRODUCT -->
                         <div class="row">
@@ -228,80 +221,81 @@ Array ( [Delivery_ID] => 1
 
                         <hr>
                         <?php
-                                    $x = $i;
+                                                $x = $i;
 
-                                    $sumquantity = $sumquantity + $values["item_quantity"];
-                                    $total = $total + ($values["item_quantity"] * $values["item_price"]);
-                                    $totaldelivery = $total;
-                                }
-                                ?>
+                                                $sumquantity = $sumquantity + $values["item_quantity"];
+                                                $total = $total + ($values["item_quantity"] * $values["item_price"]);
+                                            }
+                                            ?>
 
 
                         <?php
-                            }
+                                        }
 
-                            ?>
+                                        ?>
                         <!-- END PRODUCT -->
 
                         <div class=" text-right ml-3  " style="margin: 10px">
                             การสั่งซื้อ: <b><?php echo $sumquantity ?> รายการ</b>
                         </div>
+                        <br>
 
                         <div class=" text-right ml-3 " style="margin: 10px">
 
-                            ค่าสินค่า <b><?php echo $total ?> บาท</b>
-                        </div>
-
-                        <div class=" text-right ml-3 " style="margin: 10px">
-
-                            รวมทั้งหมด: <b><?php echo $totaldelivery ?> บาท</b>
+                            รวมทั้งหมด: <b><?php echo $total ?> บาท</b>
                         </div>
 
                     </form>
 
                     <hr>
+                    <?php //echo '<pre>', print_r($row), '</pre>'; 
+                                    //SELECT * FROM `user` WHERE 1
+                                    //echo    $username;
+                                    $queryuser = "SELECT * FROM `user` WHERE `User_Username` = '" . $username . "'"; // แก้ที่อยู่
+                                    $resultuser = mysqli_query($conn, $queryuser);
+                                    $rowuser = mysqli_fetch_array($resultuser);
+                                    //echo '<pre>', print_r($rowuser), '</pre>';
 
-                    <form action="php\insert.php" method="POST" enctype="multipart/form-data">
+                                    ?>
+                    <form action="cartsubmitok.php" method="POST" enctype="multipart/form-data">
                         <div class="modal-body">
 
                             <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-2 col-form-label py-2 ">username</label>
+                                <label for="inputPassword"
+                                    class="col-sm-2 col-form-label py-2 ">Userของผู้ใช้งาน</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="username"
-                                        value="<?php echo $_POST['name'] ?>" disabled>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Username"
+                                        value="<?php echo $rowuser['User_Username']; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlTextarea1" class="py-2">ที่อยู่ในการส่งสินค้า</label>
-                                <textarea class="form-control" id="addressuser2" name="addressuser2" rows="5"
-                                    placeholder="ที่อยู่ในการส่งสินค้า"
-                                    disabled><?php echo $_POST['addressuser'] ?></textarea>
+                                <label for="exampleFormControlTextarea1" class="py-2">ที่อยู่ลูกค้า</label>
+                                <textarea class="form-control" id="addressuser" name="addressuser" rows="5"
+                                    placeholder="ที่อยู่ลูกค้า"></textarea>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label py-2 ">เบอร์โทรติดต่อ</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control" id="numberphone" name="numberphone"
-                                        placeholder="เบอร์โทรติดต่อ" value="<?php echo $_POST['numberphone'] ?>"
-                                        disabled>
+                                        placeholder="เบอร์โทรติดต่อ"
+                                        value="<?php echo $rowuser['User_Telephonenumber']; ?>">
                                 </div>
                             </div>
-                            <input type="hidden" name="addressuser" id="addressuser"
-                                value="<?php echo $_POST['addressuser'] ?>">
-                            <input type="hidden" name="Totalprice" id="Totalprice" value="<?php echo $totaldelivery ?>">
-                            <input type="hidden" name="phone" id="phone" value="<?php echo $_POST['numberphone'] ?>">
 
-                            <input type="hidden" name="UserID" id="UserID" value="<?php echo $_POST['UserID'] ?>">
-                            <input type="hidden" name="tel" id="tel" value="<?php echo $_POST['numberphone'] ?>">
+
+                            <input type="hidden" name="UserID" id="UserID" value="<?php echo $rowuser['User_ID']; ?>">
+                            <input type="hidden" name="Totalprice" id="Totalprice" value="<?php echo $total ?>">
                         </div>
 
 
 
                         <div class="modal-footer">
-
-                            <a href="cartsubmit.php" class="btn btn-secondary">
+                            <a href="cart.php" class="btn btn-secondary">
                                 ยกเลิกการสั่งซื้อ
                             </a>
+
+
                             <button type="submit" name="submitcart" id="submitcart"
                                 class="btn btn-primary">ยืนยันการสั่งซื้อสินค้า
                             </button>
@@ -321,7 +315,7 @@ Array ( [Delivery_ID] => 1
     </div>
     <?php } else {
 
-        echo '<script>window.location="shopproduct.php"</script>';
+                    echo '<script>window.location="shopproduct.php"</script>';
 
 
 
@@ -329,11 +323,33 @@ Array ( [Delivery_ID] => 1
 
 
 
-    ?>
+                ?>
     <?php }
-    ?>
+                ?>
 </body>
 <?php
 
-include('include\importjavascript.php');
+            include('include\importjavascript.php');
+            ?>
+<?php
+        } else {
+            //echo 'ล้มเหลว';
+            echo "<script> alert('รหัสผ่านผิด'); </script>";
+
+            header('Refresh:0; url=cartsub.php');
+        }
+    } else {
+        //echo "<script> alert('ไม่พบ Username นี้ในระบบ'); </script>";
+        //header('Refresh:0; url=login.php');
+        //header('location:../login.php');
+        echo '<script>window.location="cartsub.php"</script>';
+    }
+} else {
+    echo ('ล้มเหลว');
+    header('location:../index.php');
+}
+
+
+
+
 ?>
