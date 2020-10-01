@@ -11,7 +11,11 @@
     include('include\importcss.php');
     include('include\navber.php');
 
-
+    foreach ($_SESSION["returnbook"] as $keys => $values) {
+        unset($_SESSION["returnbook"][$keys]);
+        //echo '<script>window.location="../shopproduct.php"</script>';
+        //
+    }
     /*
     echo '<pre>';
     echo 'get';
@@ -243,26 +247,26 @@
                         ?>
 
                         <tr>
-                            <th width="5% " class="text-right"><?php
-                                                                            //$code = sprintf('O-%04d', $rowproduct['orders_id']);
-                                                                            echo $i; ?>
+                            <th class="text-right"><?php
+                                                                //$code = sprintf('O-%04d', $rowproduct['orders_id']);
+                                                                echo $i; ?>
                             </th>
-                            <th width="8%" class="text-right"><?php echo $rowproduct["orderrent_productid"]  ?>
+                            <th class="text-right"><?php echo $rowproduct["orderrent_productid"]  ?>
                             </th>
                             <th width="10%" class="text-center"><img class="img-responsive"
                                     src="img\product\<?php echo $rowproduct["Product_Photo"] ?>" alt="prewiew"
                                     width="120" height="80"></th>
-                            <td width="20%"><?php echo $rowproduct["Product_Name"]  ?></td>
-                            <td width="9%" class=" text-right"><?php echo $rowproduct["orderrent_amount"]  ?> </td>
-                            <td width="15%" class="text-center"><?php echo $rowproduct["orderrent_rentdate"]  ?></td>
+                            <td><?php echo $rowproduct["Product_Name"]  ?></td>
+                            <td class=" text-right"><?php echo $rowproduct["orderrent_amount"]  ?> </td>
+                            <td class="text-center"><?php echo $rowproduct["orderrent_rentdate"]  ?></td>
 
 
-                            <td width="11%" class="text-center">
+                            <td class="text-center">
 
 
                                 <?php echo $rowproduct["orderrent_returndate"]  ?></td>
 
-                            <td width="21%" class="text-center">
+                            <td class="text-center">
                                 <form
                                     action="returnproduct.php?action=add&id=<?php echo $rowproduct["Product_ID"]; ?>&&Order_id=<?php echo $orderid  ?>"
                                     method="POST">

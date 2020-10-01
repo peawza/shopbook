@@ -11,7 +11,11 @@
     include('include\importcss.php');
     include('include\navber.php');
 
-
+    foreach ($_SESSION["returnbook"] as $keys => $values) {
+        unset($_SESSION["returnbook"][$keys]);
+        //echo '<script>window.location="../shopproduct.php"</script>';
+        //
+    }
     /*
     echo '<pre>';
     echo 'get';
@@ -228,76 +232,63 @@
                                 if ($rowproduct['orderrent_status'] == 0) {
                                     # code...
 
-                                    /*
-                                    <th width="5%" class="text-center">ลำดับ</th>
-                            <th width="8%" class="text-center">รหัสหนังสือ</th>
-                            <th width="10%" class="text-center">รูป</th>
-                            <th width="20%" class="text-center">ชื่อหนังสือ</th>
-                            <th width="9%" class="text-center">จำนวนที่เช่าหนังสือ</th>
-                            <th width="15%" class="text-center">เช่าหนังสือวันที่</th>
-                            <th width="11%" class="text-center">คืนหนังสือก่อนวันที่</th>
-                            <th width="21%" class="text-center">คืนหนังสือ</th>
-                                    
-                                    
-                                    */
+
                         ?>
 
                         <tr>
-                            <th width="5% " class="text-right"><?php
-                                                                            //$code = sprintf('O-%04d', $rowproduct['orders_id']);
-                                                                            echo $i; ?>
+                            <th class="text-right"><?php
+                                                                //$code = sprintf('O-%04d', $rowproduct['orders_id']);
+                                                                echo $i; ?>
                             </th>
-                            <th width="8%" class="text-right"><?php echo $rowproduct["orderrent_productid"]  ?>
-                            </th>
-                            <th width="10%" class="text-center"><img class="img-responsive"
-                                    src="img\product\<?php echo $rowproduct["Product_Photo"] ?>" alt="prewiew"
-                                    width="120" height="80"></th>
-                            <td width="20%"><?php echo $rowproduct["Product_Name"]  ?></td>
-                            <td width="9%" class=" text-right"><?php echo $rowproduct["orderrent_amount"]  ?> </td>
-                            <td width="15%" class="text-center"><?php echo $rowproduct["orderrent_rentdate"]  ?></td>
+                            <thclass="text-right"><?php echo $rowproduct["orderrent_productid"]  ?>
+                                </thclass=>
+                                <td><?php echo $rowproduct["Order_addressuser"]  ?></td>
+                                <td><?php echo $rowproduct["Product_Name"]  ?></td>
+                                <td class=" text-right"><?php echo $rowproduct["orderrent_amount"]  ?> </td>
+                                <td class="text-center"><?php echo $rowproduct["orderrent_rentdate"]  ?></td>
 
 
-                            <td width="11%" class="text-center">
+                                <td class="text-center">
 
 
-                                <?php echo $rowproduct["orderrent_returndate"]  ?></td>
+                                    <?php echo $rowproduct["orderrent_returndate"]  ?></td>
 
-                            <td width="21%" class="text-center">
-                                <form
-                                    action="returnproduct.php?action=add&id=<?php echo $rowproduct["Product_ID"]; ?>&&Order_id=<?php echo $orderid  ?>"
-                                    method="POST">
+                                <td class="text-center">
+                                    <form
+                                        action="returnproduct.php?action=add&id=<?php echo $rowproduct["Product_ID"]; ?>&&Order_id=<?php echo $orderid  ?>"
+                                        method="POST">
 
-                                    <input class="form-control form-control-sm " type="Number" name="returnamount"
-                                        id="returnamount" placeholder="จำนวนหนังสือที่คืน" min='0'
-                                        max="<?php echo $rowproduct["orderrent_amount"]; ?>" required>
-                                    <input type="hidden" name="idproduct" id="idproduct"
-                                        value="<?php echo $rowproduct["Product_ID"]; ?>">
-                                    <input type="hidden" name="productname" id="productname"
-                                        value="<?php echo $rowproduct["Product_Name"]; ?>">
-                                    <input type="hidden" name="productphoto" id="productphoto"
-                                        value="<?php echo $rowproduct["Product_Photo"]; ?>">
-                                    <input type="hidden" name="productprice" id="productprice"
-                                        value="<?php echo $rowproduct["Product_Price"]; ?>">
-                                    <input type="hidden" name="daterent" id="daterent"
-                                        value="<?php echo $rowproduct["orderrent_rentdate"]; ?>">
-                                    <input type="hidden" name="detereturn" id="detereturn"
-                                        value="<?php echo $rowproduct["orderrent_returndate"]; ?>">
-                                    <input type="hidden" name="rentamount" id="rentamount"
-                                        value="<?php echo $rowproduct["orderrent_amount"]; ?>">
-
-
-
-                                    <button type="submit" class="btn btn-info  btn-lg btn-block "
-                                        id="add_to_returnproduct" name="add_to_returnproduct">คืนหนังสือ</button>
+                                        <input class="form-control form-control-sm " type="Number" name="returnamount"
+                                            id="returnamount" placeholder="จำนวนหนังสือที่คืน" min='0'
+                                            max="<?php echo $rowproduct["orderrent_amount"]; ?>" required>
+                                        <input type="hidden" name="idproduct" id="idproduct"
+                                            value="<?php echo $rowproduct["Product_ID"]; ?>">
+                                        <input type="hidden" name="productname" id="productname"
+                                            value="<?php echo $rowproduct["Product_Name"]; ?>">
+                                        <input type="hidden" name="productphoto" id="productphoto"
+                                            value="<?php echo $rowproduct["Product_Photo"]; ?>">
+                                        <input type="hidden" name="productprice" id="productprice"
+                                            value="<?php echo $rowproduct["Product_Price"]; ?>">
+                                        <input type="hidden" name="daterent" id="daterent"
+                                            value="<?php echo $rowproduct["orderrent_rentdate"]; ?>">
+                                        <input type="hidden" name="detereturn" id="detereturn"
+                                            value="<?php echo $rowproduct["orderrent_returndate"]; ?>">
+                                        <input type="hidden" name="rentamount" id="rentamount"
+                                            value="<?php echo $rowproduct["orderrent_amount"]; ?>">
 
 
 
-                                </form>
+                                        <button type="submit" class="btn btn-info  btn-lg btn-block "
+                                            id="add_to_returnproduct" name="add_to_returnproduct">คืนหนังสือ</button>
+
+
+
+                                    </form>
 
 
 
 
-                            </td>
+                                </td>
 
 
 

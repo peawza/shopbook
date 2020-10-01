@@ -23,6 +23,12 @@ echo '</pre>';
 
 //print_r($_SESSION);
 
+foreach ($_SESSION["returnbook"] as $keys => $values) {
+    unset($_SESSION["returnbook"][$keys]);
+    //echo '<script>window.location="../shopproduct.php"</script>';
+    //
+}
+
 ?>
 
 
@@ -88,13 +94,13 @@ echo '</pre>';
             //$selectproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Product_Name` LIKE '%" . $keyword . "%' ";
             //$resultproduct = mysqli_query($conn, $selectproduct);
 
-            $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`AND`user`.`User_ID` = '" . $_SESSION['ID'] . "'AND `user`.`User_Firstname`LIKE'%" . $keyword . "%' ";
+            $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`AND `user`.`User_Firstname`LIKE'%" . $keyword . "%' ";
             $resultordersales = mysqli_query($conn, $selectordersales);
 
 
 
 
-            $selectordersales2 = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`AND`user`.`User_ID` = '" . $_SESSION['ID'] . "' AND `user`.`User_Firstname`LIKE'%" . $keyword . "%'";
+            $selectordersales2 = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`AND `user`.`User_Firstname`LIKE'%" . $keyword . "%'";
             $resultordersales2 = mysqli_query($conn, $selectordersales2);
             $ckrow = mysqli_fetch_array($resultordersales2);
 
@@ -116,7 +122,7 @@ echo '</pre>';
 
         <?php
 
-                $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`  AND`user`.`User_ID` = '" . $_SESSION['ID'] . "'";
+                $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID` ";
                 $resultordersales = mysqli_query($conn, $selectordersales);
             }
         } else {
@@ -198,7 +204,7 @@ echo '</pre>';
 
 
                         while ($rowordersales = mysqli_fetch_array($resultordersales)) {
-                            if ($rowordersales['orders_iscomplete'] == 0) {
+                            if ($rowordersales['orders_iscomplete'] == 0 or $rowordersales['orders_iscomplete'] == 1) {
                         ?>
                         <tr>
                             <th><?php
@@ -239,7 +245,14 @@ echo '</pre>';
                             </td>
 
                             <td>
-
+                                <div class="mx-auto text-center">
+                                    <a href="returnproduct.php?Order_id=<?php
+                                                                                    echo $rowordersales["orders_id"];
+                                                                                    ?>"
+                                        class="btn btn-secondary mb-2  mx-auto text-center">
+                                        คืนหนังสือ
+                                    </a>
+                                </div>
 
                             </td>
 
@@ -440,3 +453,40 @@ echo '</pre>';
         </div>
     </div>
 </div>
+
+
+
+
+<script>
+$(".updateimgproduct-input").on("change", function() {
+    // เปลี่ยนรูปโปรไฟล์ใหม่ custom-file-input
+    /* console.log(
+      $(this)
+        .val()
+        .split("\\")
+        .pop()
+    );*/
+
+    var filename = $(this)
+        .val()
+        .split("\\")
+        .pop();
+    $(this)
+        .siblings(".custom-file-label") /// แก้ตรงนี้
+        .html(filename);
+
+    if (this.files[0]) {
+        var reader = new FileReader();
+        $(".figure").addClass("d-block");
+        reader.onload = function(e) {
+            //console.log(reader);
+            $("#imgprofile")
+                .attr("src", e.target.result)
+                .width(800)
+                .height(600);
+        };
+        reader.readAsDataURL(this.files[0]);
+        $("#submitphotoproduct").removeAttr("disabled");
+    }
+});
+</script>

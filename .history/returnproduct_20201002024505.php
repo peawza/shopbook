@@ -11,7 +11,11 @@
     include('include\importcss.php');
     include('include\navber.php');
 
-
+    foreach ($_SESSION["returnbook"] as $keys => $values) {
+        unset($_SESSION["returnbook"][$keys]);
+        //echo '<script>window.location="../shopproduct.php"</script>';
+        //
+    }
     /*
     echo '<pre>';
     echo 'get';
@@ -257,12 +261,12 @@
                             <td width="15%" class="text-center"><?php echo $rowproduct["orderrent_rentdate"]  ?></td>
 
 
-                            <td width="11%" class="text-center">
+                            <td class="text-center">
 
 
                                 <?php echo $rowproduct["orderrent_returndate"]  ?></td>
 
-                            <td width="21%" class="text-center">
+                            <td class="text-center">
                                 <form
                                     action="returnproduct.php?action=add&id=<?php echo $rowproduct["Product_ID"]; ?>&&Order_id=<?php echo $orderid  ?>"
                                     method="POST">

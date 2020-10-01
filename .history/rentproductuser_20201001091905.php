@@ -88,13 +88,13 @@ echo '</pre>';
             //$selectproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Product_Name` LIKE '%" . $keyword . "%' ";
             //$resultproduct = mysqli_query($conn, $selectproduct);
 
-            $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`AND`user`.`User_ID` = '" . $_SESSION['ID'] . "'AND `user`.`User_Firstname`LIKE'%" . $keyword . "%' ";
+            $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`AND `user`.`User_Firstname`LIKE'%" . $keyword . "%' AND`user`.`User_ID` = '" . $_SESSION['ID'] . "'";
             $resultordersales = mysqli_query($conn, $selectordersales);
 
 
 
 
-            $selectordersales2 = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`AND`user`.`User_ID` = '" . $_SESSION['ID'] . "' AND `user`.`User_Firstname`LIKE'%" . $keyword . "%'";
+            $selectordersales2 = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`AND `user`.`User_Firstname`LIKE'%" . $keyword . "%'AND`user`.`User_ID` = '" . $_SESSION['ID'] . "'";
             $resultordersales2 = mysqli_query($conn, $selectordersales2);
             $ckrow = mysqli_fetch_array($resultordersales2);
 
@@ -116,18 +116,16 @@ echo '</pre>';
 
         <?php
 
-                $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`  AND`user`.`User_ID` = '" . $_SESSION['ID'] . "'";
+                $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`AND`user`.`User_ID` = '" . $_SESSION['ID'] . "' ORDER BY `orders`.`Ordersales_Day` DESC";
                 $resultordersales = mysqli_query($conn, $selectordersales);
             }
         } else {
 
             //$selectproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` ORDER BY `product`.`Product_Name` ASC";
             //$resultproduct = mysqli_query($conn, $selectproduct);
-            $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID` ";
+            $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`AND`user`.`User_ID` = '" . $_SESSION['ID'] . "' ORDER BY `orders`.`Ordersales_Day` DESC";
             $resultordersales = mysqli_query($conn, $selectordersales);
         }
-
-
         ?>
 
 
@@ -138,18 +136,19 @@ echo '</pre>';
 
     <div class="container-fluid py-2">
         <div class="card ">
-            <h5 class="card-header text-center">รายการหนังสือที่ยังไม่คืน</h5>
+            <h5 class="card-header text-center">รายการสั่งซื้อรอการชำระเงิน</h5>
 
             <div class="py-2">
                 <table class="table table-bordered table-responsive-sm">
                     <thead>
                         <tr>
-                            <th width="5%" class="text-center">รหัสเช่าสินค้า</th>
+                            <th width="5%" class="text-center">รหัสสั่งซื้อ</th>
                             <th width="10%" class="text-center">ชื่อลูกค้า</th>
                             <th width="17%" class="text-center">ที่อยู่ลูกค้า</th>
-                            <th width="10%" class="text-center">ราคาเช่าหนังสือ</th>
+                            <th width="10%" class="text-center">จัดส่งแบบ</th>
+                            <th width="9%" class="text-center">ราคาสินค้าทั้งหมด</th>
+                            <th width="9%" class="text-center">วันที่สั่งซื้อสินค้า</th>
                             <th width="9%" class="text-center">สถานะ</th>
-                            <th width="18%" class="text-center"></th>
                             <th width="8%" class="text-center"></th>
                             <th width="12%" class="text-center"></th>
                             <th width="12%" class="text-center"></th>
@@ -158,79 +157,44 @@ echo '</pre>';
                     </thead>
                     <tbody>
                         <?php
-                        /*
 
-                        [0] => 1
-                        [orders_id] => 1
-                        [1] => 4
-                        [User_ID] => 4
-                        [2] => ฟหดกหฟดกหฟด
-                        [Order_addressuser] => ฟหดกหฟดกหฟด
-                        [3] => 2464
-                        [orders_renttotal] => 2464
-                        [4] => 0
-                        [orders_returntotal] => 0
-                        [5] => 2464
-                        [orders_sumtotal] => 2464
-                        [6] => 0
-                        [orders_iscomplete] => 0
-                        [7] => 4
-                        [8] => user
-                        [User_Username] => user
-                        [9] => $2y$10$fB6aRvLojb8vG3ukgnwcle6rynH6hiaSNAOSCfskrj2DL4A6y8HM6
-                        [User_Password] => $2y$10$fB6aRvLojb8vG3ukgnwcle6rynH6hiaSNAOSCfskrj2DL4A6y8HM6
-                        [10] => ศุภชัย
-                        [User_Firstname] => ศุภชัย
-                        [11] => แจ้งอรุณ
-                        [User_Lastname] => แจ้งอรุณ
-                        [12] => 0970562607
-                        [User_Telephonenumber] => 0970562607
-                        [13] => agileza_555@hotmail.com
-                        [User_Email] => agileza_555@hotmail.com
-                        [14] => 9091310863447.jpg
-                        [User_Photo] => 9091310863447.jpg
-                        [15] => 2020-09-26
-                        [User_Createdate] => 2020-09-26
-                        [16] => admin
-                        [User_Type] => admin
-                        
-                        */
 
 
                         while ($rowordersales = mysqli_fetch_array($resultordersales)) {
-                            if ($rowordersales['orders_iscomplete'] == 0) {
                         ?>
                         <tr>
                             <th><?php
-                                        $code = sprintf('O-%04d', $rowordersales['orders_id']);
-                                        echo $code ?>
+                                    $code = sprintf('O-%04d', $rowordersales['Ordersales_ID']);
+                                    echo $code ?>
                             </th>
                             <th><?php echo $rowordersales["User_Firstname"] . ' ' . $rowordersales['User_Lastname'] ?>
                             </th>
-                            <td><?php echo $rowordersales["Order_addressuser"]  ?></td>
-
-
-
-                            <td class=" text-right"><?php echo $rowordersales["orders_sumtotal"] ?> บาท</td>
-
+                            <td><?php echo $rowordersales["Ordersales_address"]  ?></td>
+                            <td><?php echo $rowordersales["Delivery_Name"] ?></td>
 
                             <?php
-                                    if ($rowordersales["orders_iscomplete"] == 0) {
-                                    ?>
+                                $originalDate = $rowordersales["Ordersales_Day"];
+                                $newDate = date("d / m / Y", strtotime($originalDate));
+                                ?>
+                            <td><?php echo $rowordersales["Ordersales_Totalprice"] ?></td>
+                            <td><?php echo  $newDate ?></td>
+                            <?php
+                                if ($rowordersales["Ordersales_Status"] == 'รอการชำระเงิน') {
+                                ?>
                             <td>
                                 <div class="mx-auto text-center">
-                                    <input type="button" name=" " value="หนังสือยังคืนไม่หมด"
+                                    <input type="button" name=" "
+                                        value="<?php echo $rowordersales["Ordersales_Status"]; ?>"
                                         class="btn btn-danger  btn-sm  " />
                                 </div>
                             </td>
 
-                            <td></td>
 
                             <td>
 
                                 <div class="mx-auto text-center">
                                     <input type="button" name="edit" value="รายละเอียด"
-                                        id="<?php echo $rowordersales["orders_id"]; ?>"
+                                        id="<?php echo $rowordersales["Ordersales_ID"]; ?>"
                                         class="btn btn-info  btn-sm  view_dataordersales" />
 
                                 </div>
@@ -239,48 +203,178 @@ echo '</pre>';
                             </td>
 
                             <td>
+                                <div class="mx-auto text-center">
+                                    <input type="button" name="edit" value="ชำระเงิน"
+                                        id="<?php echo $rowordersales["Ordersales_ID"]; ?>"
+                                        class="btn btn-info  btn-sm  edit_dataordersalesTransfermoney" />
+                                    <div class="py-1"></div>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="text-center">
+                                    <a href="php/delete.php?Ordersalesuser_ID=<?php
+                                                                                        echo $rowordersales["Ordersales_ID"];
+                                                                                        ?>" style="color:#000000" ">
+                                                            <i class=" fas fa-trash-alt"></i></a>
+                                </div>
+
+                            </td>
+                            <?php
+                                }
+                                if ($rowordersales["Ordersales_Status"] == 'รอยืนยันการชำระเงิน') {
+                                ?>
+
+
+                            <td>
+                                <div class="mx-auto text-center">
+                                    <input type="button" name=" "
+                                        value="<?php echo $rowordersales["Ordersales_Status"]; ?>"
+                                        class="btn btn-warning  btn-sm  " />
+                                </div>
+                            </td>
+
+
+
+                            <td>
+
+                                <div class="mx-auto text-center">
+                                    <input type="button" name="edit" value="รายละเอียด"
+                                        id="<?php echo $rowordersales["Ordersales_ID"]; ?>"
+                                        class="btn btn-info  btn-sm  view_dataordersales" />
+
+                                </div>
 
 
                             </td>
 
                             <td>
-                                <?php
-                                            /*
-                                            <div class="text-center">
-                                                <a href="php/delete.php?Order_ID=<?php
-                                                                                    echo $rowordersales["Ordersales_ID"];
-                                                                                    ?>" style="color:#000000" ">
-                                <i class=" fas fa-trash-alt"></i></a>
-            </div>
+                                <div class="mx-auto text-center">
 
-            */
-            ?>
-
-            </td>
-            <?php
-                                    }
-
-
-                                    ?>
+                                    <div class="mx-auto text-center">
+                                        <input type="button" name="edit" value="แก้ไขชำระเงิน"
+                                            id="<?php echo $rowordersales["Ordersales_ID"]; ?>"
+                                            class="btn btn-info  btn-sm  edit_dataordersalesTransfermoney" />
+                                        <div class="py-1"></div>
+                                    </div>
 
 
 
-            <?php
+                                </div>
+
+
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    <a href="php/delete.php?Ordersalesuser_ID=<?php
+                                                                                        echo $rowordersales["Ordersales_ID"];
+                                                                                        ?>" style="color:#000000" ">
+                                                            <i class=" fas fa-trash-alt"></i></a>
+                                </div>
+
+                            </td>
+                            <?php
+                                }
+
+                                if ($rowordersales["Ordersales_Status"] == 'รอการจัดส่งสินค้า') {
+                                ?>
+
+                            <td>
+                                <div class="mx-auto text-center">
+                                    <input type="button" name=" "
+                                        value="<?php echo $rowordersales["Ordersales_Status"]; ?>"
+                                        class="btn btn-success  btn-sm  " />
+                                </div>
+                            </td>
+
+
+                            <td>
+
+                                <div class="mx-auto text-center">
+                                    <input type="button" name="edit" value="รายละเอียด"
+                                        id="<?php echo $rowordersales["Ordersales_ID"]; ?>"
+                                        class="btn btn-info  btn-sm  view_dataordersales" />
+
+                                </div>
+
+
+                            </td>
+
+                            <td colspan="2">
 
 
 
 
-                            }
+
+                            </td>
+                            <?php
+                                }
+                                ?>
+
+                            <?php
+                                if ($rowordersales["Ordersales_Status"] == 'กำลังจัดส่งสินค้า') {
+                                ?>
+
+                            <td>
+                                <div class="mx-auto text-center">
+                                    <input type="button" name=" "
+                                        value="<?php echo $rowordersales["Ordersales_Status"]; ?>"
+                                        class="btn btn-primary  btn-sm  " />
+                                </div>
+                            </td>
+
+
+                            <td>
+
+                                <div class="mx-auto text-center">
+                                    <input type="button" name="edit" value="รายละเอียด"
+                                        id="<?php echo $rowordersales["Ordersales_ID"]; ?>"
+                                        class="btn btn-info  btn-sm  view_dataordersales" />
+
+                                </div>
+
+
+                            </td>
+
+                            <td colspan="2">
+                                <div class="mr-auto text-justify">
+
+                                    <p class="font-weight-bold">หมายเลขพัสดุ :
+                                        <?php echo $rowordersales['ordersales_Packagenumber'] ?></p>
+                                </div>
+
+
+                            </td>
+
+
+
+
+                            <?php
+                                }
+                                ?>
+
+
+
+
+
+
+
+
+
+                        </tr>
+
+                        <?php
                         }
-                            ?>
-            </tbody>
+                        ?>
+
+                    </tbody>
 
 
-            </table>
+                </table>
 
 
+            </div>
         </div>
-    </div>
     </div>
 
 
@@ -440,3 +534,40 @@ echo '</pre>';
         </div>
     </div>
 </div>
+
+
+
+
+<script>
+$(".updateimgproduct-input").on("change", function() {
+    // เปลี่ยนรูปโปรไฟล์ใหม่ custom-file-input
+    /* console.log(
+      $(this)
+        .val()
+        .split("\\")
+        .pop()
+    );*/
+
+    var filename = $(this)
+        .val()
+        .split("\\")
+        .pop();
+    $(this)
+        .siblings(".custom-file-label") /// แก้ตรงนี้
+        .html(filename);
+
+    if (this.files[0]) {
+        var reader = new FileReader();
+        $(".figure").addClass("d-block");
+        reader.onload = function(e) {
+            //console.log(reader);
+            $("#imgprofile")
+                .attr("src", e.target.result)
+                .width(800)
+                .height(600);
+        };
+        reader.readAsDataURL(this.files[0]);
+        $("#submitphotoproduct").removeAttr("disabled");
+    }
+});
+</script>

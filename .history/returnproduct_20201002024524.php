@@ -11,7 +11,11 @@
     include('include\importcss.php');
     include('include\navber.php');
 
-
+    foreach ($_SESSION["returnbook"] as $keys => $values) {
+        unset($_SESSION["returnbook"][$keys]);
+        //echo '<script>window.location="../shopproduct.php"</script>';
+        //
+    }
     /*
     echo '<pre>';
     echo 'get';

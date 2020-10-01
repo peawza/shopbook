@@ -239,7 +239,14 @@ echo '</pre>';
                             </td>
 
                             <td>
-
+                                <div class="mx-auto text-center">
+                                    <a href="returnproduct.php?Order_id=<?php
+                                                                                    echo $rowordersales["orders_id"];
+                                                                                    ?>"
+                                        class="btn btn-secondary mb-2  mx-auto text-center">
+                                        คืนหนังสือ
+                                    </a>
+                                </div>
 
                             </td>
 

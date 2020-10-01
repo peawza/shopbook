@@ -88,7 +88,7 @@ echo '</pre>';
             //$selectproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Product_Name` LIKE '%" . $keyword . "%' ";
             //$resultproduct = mysqli_query($conn, $selectproduct);
 
-            $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`AND`user`.`User_ID` = '" . $_SESSION['ID'] . "'AND `user`.`User_Firstname`LIKE'%" . $keyword . "%' ";
+            $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`AND `user`.`User_Firstname`LIKE'%" . $keyword . "%' ";
             $resultordersales = mysqli_query($conn, $selectordersales);
 
 
@@ -239,7 +239,14 @@ echo '</pre>';
                             </td>
 
                             <td>
-
+                                <div class="mx-auto text-center">
+                                    <a href="returnproduct.php?Order_id=<?php
+                                                                                    echo $rowordersales["orders_id"];
+                                                                                    ?>"
+                                        class="btn btn-secondary mb-2  mx-auto text-center">
+                                        คืนหนังสือ
+                                    </a>
+                                </div>
 
                             </td>
 

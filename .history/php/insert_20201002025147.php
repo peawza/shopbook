@@ -465,13 +465,13 @@ Array
     $resulupdateorder = $conn->query($sqlupdateorder);
 
     $sqlselectrent = ("SELECT `orderrent_status` FROM `orderrent` WHERE `orderrent_id`='" . $_GET['Order_id'] . "' AND `orderrent_status` = 0");
-    $sqlupdateorder = ("UPDATE `orders` SET `orders_iscomplete` = 1  WHERE  `orders_id`='" . $_GET['Order_id'] . "'");
+    $sqlupdateorder = ("UPDATE `orders` SET `orders_iscomplete` =   WHERE  `orders_id`='" . $_GET['Order_id'] . "'");
     $resulupdateorder = $conn->query($sqlupdateorder);
 
     $resulselectrent = $conn->query($sqlselectrent);
     $rowcount = mysqli_num_rows($resulselectrent);
     if ($rowcount == 0) {
-        $sqlupdateorder = ("UPDATE `orders` SET `orders_iscomplete` = 2  WHERE  `orders_id`='" . $_GET['Order_id'] . "'");
+        $sqlupdateorder = ("UPDATE `orders` SET `orders_iscomplete` = 1  WHERE  `orders_id`='" . $_GET['Order_id'] . "'");
         $resulupdateorder = $conn->query($sqlupdateorder);
     }
     echo "<script> alert('บันทึกข้อมูลสำเสร็จ'); </script>";
