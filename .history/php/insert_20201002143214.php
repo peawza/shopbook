@@ -380,12 +380,6 @@ Array
             $calculate = $values["item_rentamount"] - $values["item_amount"];
 
             $returnamount = $values["item_amount"];
-
-            if ($values["item_rentamount"] != $returnamount) {
-                $sqlinserproductloss = ("INSERT INTO `productloss`( `Product_ID`, `productloss_amount`, `productloss_price`) VALUES ('" . $values["item_id"] . "','" . $calculate . "','" . $values["item_productbuy"] . "')");
-                $resulinserproductloss = $conn->query($sqlinserproductloss);
-            }
-
             while ($values["item_rentamount"] != $returnamount) {
 
                 $total += $values["item_productbuy"];
@@ -393,7 +387,10 @@ Array
 
                 $returnamount++;
             }
-
+            if ($values["item_rentamount"] != $returnamount) {
+                $sqlreturnproduct = ("");
+                $resultreturnproduct = $conn->query($sqlreturnproduct);
+            }
             //echo $total;
         }
 

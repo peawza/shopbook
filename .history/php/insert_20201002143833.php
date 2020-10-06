@@ -385,7 +385,6 @@ Array
                 $sqlinserproductloss = ("INSERT INTO `productloss`( `Product_ID`, `productloss_amount`, `productloss_price`) VALUES ('" . $values["item_id"] . "','" . $calculate . "','" . $values["item_productbuy"] . "')");
                 $resulinserproductloss = $conn->query($sqlinserproductloss);
             }
-
             while ($values["item_rentamount"] != $returnamount) {
 
                 $total += $values["item_productbuy"];

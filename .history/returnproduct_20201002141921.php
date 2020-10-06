@@ -57,8 +57,7 @@
                     'item_photo' => $_POST['productphoto'],
                     'item_daterent' =>     $_POST['daterent'],
                     'item_detereturn' =>     $_POST['detereturn'],
-                    'item_rentamount' =>     $_POST['rentamount'],
-                    'item_productbuy' =>     $_POST['productbuy']
+                    'item_rentamount' =>     $_POST['rentamount']
 
                 );
                 $_SESSION["returnbook"][$count] = $item_array;
@@ -76,8 +75,7 @@
                 'item_photo' => $_POST['productphoto'],
                 'item_daterent' =>     $_POST['daterent'],
                 'item_detereturn' =>     $_POST['detereturn'],
-                'item_rentamount' =>     $_POST['rentamount'],
-                'item_productbuy' =>     $_POST['productbuy']
+                'item_rentamount' =>     $_POST['rentamount']
             );
             $_SESSION["returnbook"][0] = $item_array;
             echo '<script>alert("เพิ่มสินค้าลงในตะกร้าสินค้าแล้ว")</script>';
@@ -365,7 +363,7 @@
                             <th width="5%" class="text-center">ลำดับ</th>
                             <th width="10%" class="text-center">รูปหนังสือ</th>
                             <th width="8%" class="text-center">ชื่อหนังสือ</th>
-                            <th width="8%" class="text-center">หนังสือหายปรับเล่มละ</th>
+                            <th width="8%" class="text-center">ราคาหนังสือ</th>
                             <th width="12%" class="text-center">วันที่เช่า</th>
                             <th width="12%" class="text-center">วันที่ต้องคืน</th>
                             <th width="6%" class="text-center">จำนวนหนังสือที่เช่า</th>
@@ -415,7 +413,7 @@
                                         $returnamount = $values["item_amount"];
                                         while ($values["item_rentamount"] != $returnamount) {
 
-                                            $total += $values["item_productbuy"];
+                                            $total += $values["item_price"];
 
 
                                             $returnamount++;
@@ -462,7 +460,7 @@
                                     src="img\product\<?php echo $values['item_photo'] ?>" alt="prewiew" width="120"
                                     height="80"></th>
                             <th width="8%" class="text-center"><?php echo $values["item_name"] ?></th>
-                            <th width="8%" class="text-right"><?php echo $values["item_productbuy"] ?> บาท</th>
+                            <th width="8%" class="text-right"><?php echo $values["item_price"] ?> บาท</th>
                             <th width="12%" class="text-center"><?php echo $newDaterent ?></th>
                             <th width="12%" class="text-center"><?php echo $newDatereturn ?></th>
                             <th width="6%" class="text-center"><?php echo $values["item_rentamount"] ?></th>

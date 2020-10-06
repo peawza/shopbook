@@ -279,9 +279,8 @@ echo '</pre>';
                         <tr>
                             <th width="25%" class="text-center">ชื่อสินค้า</th>
                             <th width="15%" class="text-center">ประเภทสินค้า</th>
-                            <th width="7%" class="text-center">ราคาซื้อหนังสือ</th>
-                            <th width="7%" class="text-center">ราคาเช่า</th>
-                            <th width="15%" class="text-center">จำนวนคงเหลือ</th>
+                            <th width="15%" class="text-center">ราคา</th>
+                            <th width=" 15%" class="text-center">จำนวนคงเหลือ</th>
                             <th width="12%" class="text-center"></th>
                             <th width="12%" class="text-center"></th>
                             <th width="6%" class="text-center"></th>
@@ -306,6 +305,34 @@ echo '</pre>';
                         }
                         echo '</pre>';
 
+
+                            Array
+                                (
+                                    [0] => 31
+                                    [Product_ID] => 31
+                                    [1] => 37
+                                    [Type_ID] => 37
+                                    [2] => sdasd
+                                    [Product_Name] => sdasd
+                                    [3] => asdasd
+                                    [Product_Details] => asdasd
+                                    [4] => 1000000000.00
+                                    [Product_Price] => 1000000000.00
+                                    [5] => 23
+                                    [Product_Balance] => 23
+                                    [6] => 12213
+                                    [Product_Photo] => 12213
+                                    [7] => 2020-03-11
+                                    [date_save] => 2020-03-11
+                                    [8] => 2
+                                    [Warranty_ID] => 2
+                                    [9] => 37
+                                    [10] => adsadqdas
+                                    [Type_Name] => adsadqdas
+                                )
+
+
+
                         */
 
                         while ($rowproduct = mysqli_fetch_array($resultproduct)) {
@@ -314,7 +341,6 @@ echo '</pre>';
 
                             <th><?php echo $rowproduct["Product_Name"] ?></th>
                             <td><?php echo $rowproduct["Type_Name"] ?></td>
-                            <td><?php echo $rowproduct["product_buy"] ?></td>
                             <td><?php echo $rowproduct["Product_Price"] ?></td>
                             <td><?php echo $rowproduct["Product_Balance"] ?></td>
                             <td>

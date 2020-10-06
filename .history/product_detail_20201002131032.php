@@ -171,7 +171,7 @@ if (isset($_GET["id_product"])) {
                                     <h4 class="py-2">จำนวนที่ให้เช่าหนังสือ</h4>
                                     &nbsp
                                     &nbsp
-                                    <h4 class="py-2"><?php echo $row['Product_rentday']; ?></h4>
+                                    <h3 class="py-2"><?php echo $row['Product_rentday']; ?></h3>
                                     &nbsp
                                     &nbsp
                                     <h4 class="py-2">วัน</h4>

@@ -279,9 +279,8 @@ echo '</pre>';
                         <tr>
                             <th width="25%" class="text-center">ชื่อสินค้า</th>
                             <th width="15%" class="text-center">ประเภทสินค้า</th>
-                            <th width="7%" class="text-center">ราคาซื้อหนังสือ</th>
-                            <th width="7%" class="text-center">ราคาเช่า</th>
-                            <th width="15%" class="text-center">จำนวนคงเหลือ</th>
+                            <th width="15%" class="text-center">ราคา</th>
+                            <th width=" 15%" class="text-center">จำนวนคงเหลือ</th>
                             <th width="12%" class="text-center"></th>
                             <th width="12%" class="text-center"></th>
                             <th width="6%" class="text-center"></th>
@@ -314,7 +313,7 @@ echo '</pre>';
 
                             <th><?php echo $rowproduct["Product_Name"] ?></th>
                             <td><?php echo $rowproduct["Type_Name"] ?></td>
-                            <td><?php echo $rowproduct["product_buy"] ?></td>
+                            <td><?php echo $rowproduct["Product_Price"] ?></td>
                             <td><?php echo $rowproduct["Product_Price"] ?></td>
                             <td><?php echo $rowproduct["Product_Balance"] ?></td>
                             <td>

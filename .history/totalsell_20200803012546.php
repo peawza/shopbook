@@ -11,7 +11,7 @@
 
 
 
-require_once('php\condbbook.php');
+require_once('php\connect.php');
 //$connect = mysqli_connect("localhost", "root", "", "testing");
 //$connect = mysqli_connect("localhost", "root", "", "shop");
 //$query = "SELECT * FROM producttype ORDER BY `Type_ID` DESC"; // แก้ที่อยู่
@@ -98,12 +98,7 @@ echo '</pre>';
                         <?php
 
 
-                        $selectproduct = "SELECT `ordersalesdetail`.`product_ID`,`product`.`Product_Name`
-                        ,producttype.Type_Name,product.Product_Price,product.Product_Balance, SUM(`ordersalesdetail`.`ordersalesDetail_unit`) 
-                        `orderTotal`, SUM(`ordersalesdetail`.`ordersalesdetail_ price`) `orderTotalprice` 
-                        FROM `ordersalesdetail`,`product` ,`producttype` 
-                        WHERE `product`.`Product_ID`= `ordersalesdetail`.`product_ID` AND product.Type_ID= producttype.Type_ID 
-                        GROUP BY product_ID ORDER BY `ordersalesdetail`.`product_ID` ASC";
+                        $selectproduct = "SELECT `ordersalesdetail`.`product_ID`,`product`.`Product_Name`,producttype.Type_Name,product.Product_Price,product.Product_Balance, SUM(`ordersalesdetail`.`ordersalesDetail_unit`) `orderTotal`, SUM(`ordersalesdetail`.`ordersalesdetail_ price`) `orderTotalprice` FROM `ordersalesdetail`,`product` ,`producttype` WHERE `product`.`Product_ID`= `ordersalesdetail`.`product_ID` AND product.Type_ID= producttype.Type_ID GROUP BY product_ID ORDER BY `ordersalesdetail`.`product_ID` ASC";
                         $resultproduct = mysqli_query($conn, $selectproduct);
 
 

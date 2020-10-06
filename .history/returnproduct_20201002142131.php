@@ -365,7 +365,7 @@
                             <th width="5%" class="text-center">ลำดับ</th>
                             <th width="10%" class="text-center">รูปหนังสือ</th>
                             <th width="8%" class="text-center">ชื่อหนังสือ</th>
-                            <th width="8%" class="text-center">หนังสือหายปรับเล่มละ</th>
+                            <th width="8%" class="text-center">ราคาหนังสือ</th>
                             <th width="12%" class="text-center">วันที่เช่า</th>
                             <th width="12%" class="text-center">วันที่ต้องคืน</th>
                             <th width="6%" class="text-center">จำนวนหนังสือที่เช่า</th>

@@ -297,9 +297,9 @@ if (isset($_POST['submitproduct'])) {
     //print_r($newname);
     $url = '../img/product/' . $newname;
     if (move_uploaded_file($_FILES['file']['tmp_name'], $url)) {
-        $sql = "INSERT INTO `product` ( `Type_ID`, `Product_Name`, `Product_Details`, `Product_Price`, `Product_Balance`, `Product_Photo`, `Product_datesave`, `Product_rentday`,`product_buy`) 
+        $sql = "INSERT INTO `product` ( `Type_ID`, `Product_Name`, `Product_Details`, `Product_Price`, `Product_Balance`, `Product_Photo`, `Product_datesave`, `Product_rentday`,``) 
                             VALUES ( '" . $_POST['typeproduct'] . "', '" . $_POST['nameproduct'] . "', '" . $_POST['detail'] . "',
-                                                                                        '" . $_POST['price'] . "', '" . $_POST['unit'] . "', '" . $newname . "', '" . date("Y-m-d") . "', '" . $_POST['rentday'] . "','" . $_POST['productbuy'] . "');";
+                                                                                        '" . $_POST['price'] . "', '" . $_POST['unit'] . "', '" . $newname . "', '" . date("Y-m-d") . "', '" . $_POST['rentday'] . "');";
         $result = $conn->query($sql) or die($conn->error);
     }
 
@@ -380,20 +380,13 @@ Array
             $calculate = $values["item_rentamount"] - $values["item_amount"];
 
             $returnamount = $values["item_amount"];
-
-            if ($values["item_rentamount"] != $returnamount) {
-                $sqlinserproductloss = ("INSERT INTO `productloss`( `Product_ID`, `productloss_amount`, `productloss_price`) VALUES ('" . $values["item_id"] . "','" . $calculate . "','" . $values["item_productbuy"] . "')");
-                $resulinserproductloss = $conn->query($sqlinserproductloss);
-            }
-
             while ($values["item_rentamount"] != $returnamount) {
 
-                $total += $values["item_productbuy"];
+                $total += $values["item_price"];
 
 
                 $returnamount++;
             }
-
             //echo $total;
         }
 

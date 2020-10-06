@@ -165,41 +165,35 @@ if (isset($_GET["id_product"])) {
                             <br>
                             <p><?php echo $row['Product_Details']; ?>
                             </p>
-                            <p class="priceproduct">ราคาเช่าหนังสือ <?php echo $row['Product_Price']; ?> บาท</p>
+                            <p class="priceproduct"><?php echo $row['Product_Price']; ?></p>
                             <div class="container ">
                                 <div class="row">
                                     <h4 class="py-2">จำนวนที่ให้เช่าหนังสือ</h4>
                                     &nbsp
                                     &nbsp
-                                    <h4 class="py-2"><?php echo $row['Product_rentday']; ?></h4>
+                                    <h3 class="py-2"><?php echo $row['Product_rentday']; ?></h3>
                                     &nbsp
                                     &nbsp
                                     <h4 class="py-2">วัน</h4>
                                 </div>
 
                             </div>
-                            <div class="container ">
-
-                                <div class="row">
-                                    <h4 class="py-2">จำนวนสินค้าคงเหลือ</h4>
-                                    &nbsp
-                                    &nbsp
-                                    <h4 class="py-2"><?php echo $row['Product_Balance']; ?></h4>
-                                    &nbsp
-                                    &nbsp
-                                    <h4 class="py-2">เล่ม</h4>
-                                </div>
-
-                            </div>
-
 
                             <div class="row">
 
-                                <?php
 
-                                    if ($_SESSION['UserType'] == 'admin') {
+                                <div class="container col-8">
+                                    <div class="row">
+                                        <h4 class="py-2">จำนวนสินค้าคงเหลือ</h4>
+                                        &nbsp
+                                        &nbsp
+                                        <h4 class="py-2"><?php echo $row['Product_Balance']; ?></h4>
+                                        &nbsp
+                                        &nbsp
+                                        <h4 class="py-2">เล่ม</h4>
+                                    </div>
 
-                                    ?>
+                                </div>
                                 <div class="col-3">
                                     <div class=" py-2 float-right">
                                         <input type="number" class="form-control  float-right" id="quantity"
@@ -207,11 +201,6 @@ if (isset($_GET["id_product"])) {
                                             max="<?php echo $row["Product_Balance"]; ?>" required>
                                     </div>
                                 </div>
-                                <?php
-
-                                    }
-
-                                    ?>
                             </div>
                             <br>
                             <br>
@@ -225,10 +214,10 @@ if (isset($_GET["id_product"])) {
 
                             <input type="hidden" name="hidden_Balance" value="<?php echo $row['Product_Balance']; ?>" />
 
+                            <?php 
                             <?php
-
-                                if ($_SESSION['UserType'] == 'admin') {
-                                    if (isset($_SESSION['ID'])) {
+                            if ($_SESSION['UserType'] == 'admin') {
+                            if (isset($_SESSION['ID'])) {
                                 ?>
 
                             <button type="submit" name="add_to_cart" value="Add to Cart"
@@ -238,7 +227,7 @@ if (isset($_GET["id_product"])) {
 
 
                             <?php
-                                    } else { ?>
+                                } else { ?>
 
                             <a href="login.php"
                                 class="btn btn-success   btn-lg col-5 float-right textproduct text-center">
@@ -247,7 +236,7 @@ if (isset($_GET["id_product"])) {
                             </a>
 
                             <?php }
-                                } ?>
+                                 } ?>
 
             </form>
 

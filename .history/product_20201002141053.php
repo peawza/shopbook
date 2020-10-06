@@ -314,7 +314,7 @@ echo '</pre>';
 
                             <th><?php echo $rowproduct["Product_Name"] ?></th>
                             <td><?php echo $rowproduct["Type_Name"] ?></td>
-                            <td><?php echo $rowproduct["product_buy"] ?></td>
+                            <td><?php echo $rowproduct["Product_Price"] ?></td>
                             <td><?php echo $rowproduct["Product_Price"] ?></td>
                             <td><?php echo $rowproduct["Product_Balance"] ?></td>
                             <td>

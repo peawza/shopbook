@@ -98,12 +98,7 @@ echo '</pre>';
                         <?php
 
 
-                        $selectproduct = "SELECT `ordersalesdetail`.`product_ID`,`product`.`Product_Name`
-                        ,producttype.Type_Name,product.Product_Price,product.Product_Balance, SUM(`ordersalesdetail`.`ordersalesDetail_unit`) 
-                        `orderTotal`, SUM(`ordersalesdetail`.`ordersalesdetail_ price`) `orderTotalprice` 
-                        FROM `ordersalesdetail`,`product` ,`producttype` 
-                        WHERE `product`.`Product_ID`= `ordersalesdetail`.`product_ID` AND product.Type_ID= producttype.Type_ID 
-                        GROUP BY product_ID ORDER BY `ordersalesdetail`.`product_ID` ASC";
+                        $selectproduct = "SELECT `ordersalesdetail`.`product_ID`,`product`.`Product_Name`,producttype.Type_Name,product.Product_Price,product.Product_Balance, SUM(`ordersalesdetail`.`ordersalesDetail_unit`) `orderTotal`, SUM(`ordersalesdetail`.`ordersalesdetail_ price`) `orderTotalprice` FROM `ordersalesdetail`,`product` ,`producttype` WHERE `product`.`Product_ID`= `ordersalesdetail`.`product_ID` AND product.Type_ID= producttype.Type_ID GROUP BY product_ID ORDER BY `ordersalesdetail`.`product_ID` ASC";
                         $resultproduct = mysqli_query($conn, $selectproduct);
 
 

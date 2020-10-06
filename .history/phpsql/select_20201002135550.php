@@ -80,7 +80,7 @@ if (isset($_POST["product_ID"])) {
                </tr> 
                <tr>  
                     <td width="30%"><label>ราคาซื้อหนังสือมา</label></td>  
-                    <td width="70%">' . $row["product_buy"] . '   บาท</td>  
+                    <td width="70%">' . $row["Product_Price"] . '   บาท</td>  
                </tr>  
                <tr>  
                     <td width="30%"><label>ราคาเช่าหนังสือ</label></td>  

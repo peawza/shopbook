@@ -190,7 +190,7 @@ if (isset($_POST['submitproduct'])) {
                                     `Product_Balance`='" . $_POST['unit2'] . "',
                                     `Product_datesave`='" . date("Y-m-d") . "',
                                     `Product_rentday`='" . $_POST['rentday2'] . "',
-                                    `product_buy`='" . $_POST['productbuy2'] . "' WHERE `Product_ID` = '" . $_POST['idproduct'] . "' ";
+                                    `Product_product_buy`='" . $_POST['productbuy2'] . "' WHERE `Product_ID` = '" . $_POST['idproduct'] . "' ";
 
     $result = $conn->query($sql) or die($conn->error);
     if ($result) {

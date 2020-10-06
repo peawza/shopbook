@@ -306,7 +306,7 @@ $(document).ready(function () {
         //$('#detail2').val(data.product_ID);
         //$('#age').val(Product_Photo);
         $("#idproduct").val(data.Product_ID);
-        $("#productbuy2").val(data.product_buy);
+        $("#productbuy").val(data.product_buy);
         $("#idproduct-one").val(data.Product_ID);
         //$("#product_ID3").val(data.Product_ID);
         $("#insert").val("อัพเดท"); // แก้ตรงนี้

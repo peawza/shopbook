@@ -22,7 +22,7 @@ echo '</pre>';
 */
 
 //print_r($_SESSION);
-if (isset($_SESSION["returnbook"])) {
+if(isset()){
     foreach ($_SESSION["returnbook"] as $keys => $values) {
         unset($_SESSION["returnbook"][$keys]);
         //echo '<script>window.location="../shopproduct.php"</script>';

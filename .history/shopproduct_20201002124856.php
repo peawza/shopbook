@@ -382,10 +382,7 @@ if (isset($_GET["action"])) {
                                                             ดูรายละเอียด
                                                         </a>
                                                         <div class="col"></div>
-                                                        <?php
-                                                                if ($_SESSION['UserType'] == 'admin') {
-
-                                                                    if (isset($_SESSION['ID']) and $_SESSION['UserType'] == 'admin') {
+                                                        <?php if (isset($_SESSION['ID']) and $_SESSION['UserType'] == 'admin') {
                                                                 ?>
 
                                                         <button type="submit" name="add_to_cart" value="Add to Cart"
@@ -395,7 +392,7 @@ if (isset($_GET["action"])) {
 
 
                                                         <?php
-                                                                    } else { ?>
+                                                                } else { ?>
 
                                                         <a href="login.php"
                                                             class="btn btn-success   btn-lg col-5 float-right textproduct text-center">
@@ -403,8 +400,7 @@ if (isset($_GET["action"])) {
                                                             สั่งซื้อสินค้า
                                                         </a>
 
-                                                        <?php }
-                                                                } ?>
+                                                        <?php } ?>
                                                     </div>
 
 

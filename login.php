@@ -12,6 +12,7 @@ session_start();
     <link rel="stylesheet" href="node_modules/font-awesome5/css/fontawesome-all.css">
     <link rel="stylesheet" href="include/CSS/styles.css?v=<?php echo filemtime('include/CSS/styles.css'); ?>"
         type=" text/css">
+
     <!--
 
     <link rel="stylesheet" href="include/CSS/cssLogin.css">
@@ -42,7 +43,7 @@ session_start();
                                             <div class="input-group-text"><i class="far fa-user"></i></div>
                                         </div>
                                         <input type="text" class="form-control" placeholder="Username" maxlength="30"
-                                            id="username" name="username" required>
+                                            id="username" name="username" pattern="^[a-zA-Z0-9]+$" required>
                                     </div>
                                 </div>
                                 <div class="col-auto">
@@ -52,7 +53,7 @@ session_start();
                                             <div class="input-group-text"><i class="fas fa-key"></i></div>
                                         </div>
                                         <input type="password" class="form-control" id="password" name="password"
-                                            placeholder="Password" maxlength="20" required>
+                                            placeholder="Password" pattern="^[a-zA-Z0-9]+$" maxlength="20" required>
                                     </div>
                                 </div>
 
