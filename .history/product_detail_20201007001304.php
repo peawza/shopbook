@@ -196,8 +196,8 @@ if (isset($_GET["id_product"])) {
                             <div class="row">
 
                                 <?php
-                                    if (isset($_SESSION['UserType'])) {
-                                        if ($_SESSION['UserType'] == 'admin') {
+
+                                    if ($_SESSION['UserType'] == 'admin') {
 
                                     ?>
                                 <div class="col-3">
@@ -209,10 +209,7 @@ if (isset($_GET["id_product"])) {
                                 </div>
                                 <?php
 
-                                        }
                                     }
-
-
 
                                     ?>
                             </div>

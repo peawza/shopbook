@@ -304,22 +304,18 @@ if (isset($_GET["action"])) {
                                                             ดูรายละเอียด
                                                         </a>
                                                         <div class="col"></div>
-                                                        <?php if (isset($_SESSION['UserType'])) {
-                                                                    if ($_SESSION['UserType'] == 'admin') {
-                                                                        # code...
-
-
+                                                        <?php if (isset($_SESSION['ID'])) {
+                                                                    /*
                                                                 ?>
 
                                                         <button type="submit" name="add_to_cart" value="Add to Cart"
                                                             class="btn btn-success   btn-lg col-5 float-right textproduct text-center"><i
                                                                 class="fa fa-shopping-cart"></i>
-                                                            เช่าหนังสือ </button>
+                                                            สั่งซื้อสินค้า </button>
 
 
                                                         <?php
-
-                                                                    }
+                                                               */
                                                                 } else { ?>
 
 

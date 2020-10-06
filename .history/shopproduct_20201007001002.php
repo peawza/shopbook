@@ -16,11 +16,11 @@ include('include/navber.php');
 //เทส
 //$connect = mysqli_connect("localhost", "root", "1234", "shop");
 
-//echo ('<pre>');
+echo ('<pre>');
 //print_r($_POST);
 //print_r($_GET);
-//print_r($_SESSION);
-//echo ('</pre>');
+print_r($_SESSION);
+echo ('</pre>');
 
 if (isset($_POST["add_to_cart"])) {
     if (isset($_SESSION["shopping_cart"])) {
@@ -304,25 +304,23 @@ if (isset($_GET["action"])) {
                                                             ดูรายละเอียด
                                                         </a>
                                                         <div class="col"></div>
-                                                        <?php if (isset($_SESSION['UserType'])) {
-                                                                    if ($_SESSION['UserType'] == 'admin') {
-                                                                        # code...
-
-
+                                                        <?php if (isset($_SESSION['ID'])) {
                                                                 ?>
 
                                                         <button type="submit" name="add_to_cart" value="Add to Cart"
                                                             class="btn btn-success   btn-lg col-5 float-right textproduct text-center"><i
                                                                 class="fa fa-shopping-cart"></i>
-                                                            เช่าหนังสือ </button>
+                                                            สั่งซื้อสินค้า </button>
 
 
                                                         <?php
-
-                                                                    }
                                                                 } else { ?>
 
-
+                                                        <a href="login.php"
+                                                            class="btn btn-success   btn-lg col-5 float-right textproduct text-center">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                            สั่งซื้อสินค้า
+                                                        </a>
 
                                                         <?php } ?>
                                                     </div>
@@ -390,7 +388,7 @@ if (isset($_GET["action"])) {
 
 
                                                                 if (isset($_SESSION)) {
-                                                                    if (isset($_SESSION['UserType'])) {
+                                                                    if (isset( $_SESSION['UserType'] == 'admin')) {
 
                                                                         if (isset($_SESSION['ID']) and $_SESSION['UserType'] == 'admin') {
                                                                 ?>
@@ -404,7 +402,11 @@ if (isset($_GET["action"])) {
                                                         <?php
                                                                         } else { ?>
 
-
+                                                        <a href="login.php"
+                                                            class="btn btn-success   btn-lg col-5 float-right textproduct text-center">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                            สั่งซื้อสินค้า
+                                                        </a>
 
                                                         <?php }
                                                                     }

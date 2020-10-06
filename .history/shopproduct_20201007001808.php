@@ -314,7 +314,7 @@ if (isset($_GET["action"])) {
                                                         <button type="submit" name="add_to_cart" value="Add to Cart"
                                                             class="btn btn-success   btn-lg col-5 float-right textproduct text-center"><i
                                                                 class="fa fa-shopping-cart"></i>
-                                                            เช่าหนังสือ </button>
+                                                            สั่งซื้อสินค้า </button>
 
 
                                                         <?php
