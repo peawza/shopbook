@@ -153,10 +153,8 @@
                         <a class="dropdown-item" href="rentproductall.php">คืนหนังสือ</a>
 
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="bookdetaillrantretun.php">รายงานการเช่าหนังสือ</a>
-                        <a class="dropdown-item" href="bookloss.php">รายงานสรุปหนังสือหาย</a>
+                        <a class="dropdown-item" href="totalsell.php">รายงานสรุปการขายสินค้า</a>
                         <a class="dropdown-item" href="totaltopsell.php">รายงานอันดับสินค้าขายดี</a>
-
                     </div>
                 </li>
 

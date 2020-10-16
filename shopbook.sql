@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2020 at 09:43 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.2.32
+-- Generation Time: Oct 16, 2020 at 10:08 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -56,9 +56,20 @@ INSERT INTO `orderrent` (`orderrent_id`, `orderrent_productid`, `orderrent_amoun
 (6, 8, 1, 1232, '2020-10-01', '2020-09-30', 1),
 (7, 5, 1, 1232, '2020-10-01', '2020-09-30', 1),
 (8, 3, 1, 1232, '2020-10-02', '2020-10-04', 1),
-(8, 4, 1, 1232, '2020-10-02', '2020-10-04', 0),
-(9, 4, 1, 1232, '2020-10-02', '2020-10-04', 0),
-(9, 5, 1, 1232, '2020-10-02', '2020-10-05', 0);
+(8, 4, 1, 1232, '2020-10-02', '2020-10-04', 1),
+(9, 4, 1, 1232, '2020-10-02', '2020-10-04', 1),
+(9, 5, 1, 1232, '2020-10-02', '2020-10-05', 1),
+(10, 3, 1, 1232, '2020-10-06', '2020-10-08', 1),
+(11, 4, 1, 1232, '2020-10-15', '2020-10-17', 1),
+(12, 3, 1, 1232, '2020-10-16', '2020-10-18', 1),
+(13, 3, 1, 1232, '2020-10-16', '2020-10-18', 1),
+(14, 3, 20, 24640, '2020-10-16', '2020-10-18', 1),
+(15, 3, 20, 24640, '2020-10-16', '2020-10-18', 1),
+(16, 3, 1, 1232, '2020-10-16', '2020-10-18', 1),
+(17, 3, 1, 1232, '2020-10-16', '2020-10-18', 1),
+(18, 3, 1, 1232, '2020-10-16', '2020-10-18', 1),
+(19, 3, 1, 1232, '2020-10-16', '2020-10-18', 0),
+(19, 4, 1, 1232, '2020-10-16', '2020-10-18', 0);
 
 -- --------------------------------------------------------
 
@@ -92,7 +103,19 @@ INSERT INTO `orderreturn` (`orderreturn_id`, `orderreturn_productid`, `orderretu
 (5, 4, 1, 0, '2020-10-01'),
 (6, 8, 0, 41, '2020-10-02'),
 (7, 5, 0, 41, '2020-10-02'),
-(8, 3, 0, 201, '2020-10-02');
+(8, 3, 0, 201, '2020-10-02'),
+(8, 4, 1, 240, '2020-10-16'),
+(9, 4, 0, 440, '2020-10-16'),
+(9, 5, 0, 420, '2020-10-16'),
+(10, 3, 1, 140, '2020-10-15'),
+(11, 4, 0, 1, '2020-10-16'),
+(12, 3, 0, 201, '2020-10-16'),
+(13, 3, 0, 201, '2020-10-16'),
+(14, 3, 0, 4020, '2020-10-16'),
+(15, 3, 0, 4020, '2020-10-16'),
+(16, 3, 0, 201, '2020-10-16'),
+(17, 3, 0, 201, '2020-10-16'),
+(18, 3, 1, 0, '2020-10-16');
 
 -- --------------------------------------------------------
 
@@ -122,8 +145,18 @@ INSERT INTO `orders` (`orders_id`, `User_ID`, `Order_addressuser`, `orders_rentt
 (5, 4, 'asdasdasd', 1232, 0, 1232, 2),
 (6, 4, 'sadas', 1232, 41, 1273, 2),
 (7, 4, 'sadfsad', 1232, 41, 1273, 2),
-(8, 5, 'ฟดฟกหดฟหก', 2464, 201, 2665, 1),
-(9, 7, 'ฟกดหฟกหดหฟดก', 2464, 0, 2464, 0);
+(8, 5, 'ฟดฟกหดฟหก', 2464, 240, 2704, 2),
+(9, 7, 'ฟกดหฟกหดหฟดก', 2464, 440, 2904, 2),
+(10, 4, 'sadasdasd', 1232, 140, 1372, 2),
+(11, 4, 'sadsadsad', 1232, 1, 1233, 2),
+(12, 4, 'sadsadasfdsaf', 1232, 201, 1433, 2),
+(13, 4, 'asdasdasd', 1232, 201, 1433, 2),
+(14, 4, 'sadasdas', 24640, 4020, 28660, 2),
+(15, 4, 'asdas', 24640, 4020, 28660, 2),
+(16, 4, 'asdsa', 1232, 201, 1433, 2),
+(17, 4, 'sadas', 1232, 201, 1433, 2),
+(18, 4, 'sdsfds', 1232, 0, 1232, 2),
+(19, 4, 'ฟหกหฟ', 2464, 0, 2464, 0);
 
 -- --------------------------------------------------------
 
@@ -149,9 +182,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`Product_ID`, `Type_ID`, `Product_Name`, `Product_Details`, `Product_Price`, `product_buy`, `Product_Balance`, `Product_rentday`, `Product_Photo`, `Product_datesave`) VALUES
-(3, 3, 'sadsazzz', 'asdasd', 1232, 201, 119, 2, '9091656887235.png', '2020-09-30'),
-(4, 3, 'sadsazzz', 'asdasd', 1232, 1, 114, 2, '9091656962219.png', '2020-09-30'),
-(5, 3, 'sadsazzz', 'asdasd', 1232, 1, 116, 3, '9091657504068.png', '2020-09-30'),
+(3, 3, 'sadsazzza', 'asdasd', 1232, 201, 74, 2, '9091656887235.png', '2020-09-30'),
+(4, 3, 'sadsazzz', 'asdasd', 1232, 200, 113, 2, '9091656962219.png', '2020-10-16'),
+(5, 3, 'sadsazzz', 'asdasd', 1232, 200, 116, 3, '9091657504068.png', '2020-10-16'),
 (7, 3, 'DELL Inspiron 15 3593-W566055149THW10 51 views 0 SHARES', 'hjgjkkclnxjbkvjxczkj;vkjbxzckjblv', 1232, 5000, 122, 3, '9092690249200.png', '2020-10-02'),
 (8, 4, 'sad', 'asdasd', 1232, 1, 122, 2, '9091686347777.png', '2020-09-30'),
 (10, 8, 'saasf', 'asfasd', 1232, 1, 12321, 12, '9093949712061.png', '2020-10-02'),
@@ -175,7 +208,11 @@ CREATE TABLE `productloss` (
 --
 
 INSERT INTO `productloss` (`productloss_id`, `Product_ID`, `productloss_amount`, `productloss_price`) VALUES
-(1, 3, 1, 201);
+(1, 3, 1, 201),
+(2, 4, 1, 1),
+(5, 5, 1, 200),
+(9, 4, 1, 200),
+(10, 3, 1, 201);
 
 -- --------------------------------------------------------
 
@@ -223,7 +260,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`User_ID`, `User_Username`, `User_Password`, `User_Firstname`, `User_Lastname`, `User_Telephonenumber`, `User_Email`, `User_Photo`, `User_Createdate`, `User_Type`) VALUES
-(4, 'user', '$2y$10$fB6aRvLojb8vG3ukgnwcle6rynH6hiaSNAOSCfskrj2DL4A6y8HM6', 'ศุภชัย', 'แจ้งอรุณ', '0970562607', 'agileza_555@hotmail.com', '9091310863447.jpg', '2020-09-26', 'admin'),
+(4, 'user', '$2y$10$SY4xbwIYnzlGXMpgdZHyf.LPEcYFIsZqluIzuCwKXBq3M3BeEG5Ay', 'ศุภชัย', 'แจ้งอรุณ', '0970562607', 'agileza_555@hotmail.com', '9100433747770.png', '2020-09-26', 'admin'),
 (5, 'user1', '$2y$10$sU4vbeu5J6ba7vIztG4nXuNPgEJaOWMaDurvtzP68F41qMfwkVlsm', 'ศุภชัย', 'แจ้งอรุณ', '0970562607', 'agileza_555@hotmail.com', '9091714427710.png', '2020-09-27', 'user'),
 (6, 'user3', '$2y$10$8vdVSxWRxGy9m0hJ2acvneXKr5613yUUgxq1hGYyesiRaEDDADFWe', 'ศุภชัย', 'แจ้งอรุณ', '0970562607', 'agileza_555@hotmail.com', '9092689045023.png', '2020-09-29', 'user'),
 (7, 'peaw', '$2y$10$ZK/2rNjcH/DwoWATptUXJ.fwHXboo1Y52LZ2OdffIWAdRI/opNtw6', 'asdsa', 'dsadsa', '0970562607', 'agileza_555@hotmail.com', 'profile.png', '2020-10-02', 'user');
@@ -264,8 +301,7 @@ ALTER TABLE `product`
 -- Indexes for table `productloss`
 --
 ALTER TABLE `productloss`
-  ADD PRIMARY KEY (`productloss_id`),
-  ADD UNIQUE KEY `Product_ID` (`Product_ID`);
+  ADD PRIMARY KEY (`productloss_id`);
 
 --
 -- Indexes for table `producttype`
@@ -293,7 +329,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `productloss`
 --
 ALTER TABLE `productloss`
-  MODIFY `productloss_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `productloss_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `producttype`
@@ -305,7 +341,7 @@ ALTER TABLE `producttype`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -336,12 +372,6 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`Type_ID`) REFERENCES `producttype` (`Type_ID`);
-
---
--- Constraints for table `productloss`
---
-ALTER TABLE `productloss`
-  ADD CONSTRAINT `productloss_ibfk_1` FOREIGN KEY (`Product_ID`) REFERENCES `product` (`Product_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

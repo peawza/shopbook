@@ -1,5 +1,5 @@
 <?php
-require_once('php\condbbook.php');
+//require_once('php\connect.php');
 //$connect = mysqli_connect("localhost", "root", "", "testing");
 //$connect = mysqli_connect("localhost", "root", "", "shop");
 //$query = "SELECT * FROM producttype ORDER BY `Type_ID` DESC"; // แก้ที่อยู่

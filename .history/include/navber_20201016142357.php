@@ -156,7 +156,7 @@
                         <a class="dropdown-item" href="bookdetaillrantretun.php">รายงานการเช่าหนังสือ</a>
                         <a class="dropdown-item" href="bookloss.php">รายงานสรุปหนังสือหาย</a>
                         <a class="dropdown-item" href="totaltopsell.php">รายงานอันดับสินค้าขายดี</a>
-
+                        bookdetaillrantretun.php
                     </div>
                 </li>
 
