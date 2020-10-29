@@ -1,16 +1,11 @@
 <?php
 require_once("php/condbbook.php");
 $Product_ID = ($_GET["product_ID"]);
-//$UserType = ($_GET["Userlevel"]);
-//echo $Product_ID;
-//echo $UserType;
-//print_r($_POST);
-$sql = "SELECT * FROM `product` WHERE `Product_ID`= '" . $Product_ID . "'"; // alt  + 96
+
+$sql = "SELECT * FROM `product` WHERE `Product_ID`= '" . $Product_ID . "'";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
-//echo '<pre>';
-//print_r($row);
-//echo '</pre>';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,22 +14,20 @@ $row = $result->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-    include('include/importcss.php'); // เรียกใช่ไฟล์ include css
+    include('include/importcss.php');
     ?>
     <title>เปลียนรูปสินค้า</title>
     <?php
-    //session_start();    
+
     include('include/navber.php');
 
 
-    $sql = "SELECT * FROM `product` WHERE `Product_ID`= '" . $Product_ID . "'"; // alt  + 96
+    $sql = "SELECT * FROM `product` WHERE `Product_ID`= '" . $Product_ID . "'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 
 
-    //echo $result->num_rows;  
 
-    //print_r($row);
     ?>
 </head>
 
@@ -42,12 +35,7 @@ $row = $result->fetch_assoc();
 
 <body>
 
-    <?php
 
-    //echo $row["Product_Photo"];
-
-
-    ?>
 
 
 
@@ -83,13 +71,13 @@ $row = $result->fetch_assoc();
         </div>
 
 
-        <!-- Modal -->
+
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">อัพโหลดรูปภาพ</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -149,7 +137,7 @@ $row = $result->fetch_assoc();
 
 
     <?php
-    include('include/importjavascript.php'); // เรียกใช่ไฟล์ include javascript
+    include('include/importjavascript.php');
     ?>
 
 

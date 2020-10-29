@@ -1,15 +1,12 @@
 <?php
 require_once("php/condbbook.php");
 $UserID = ($_GET["UserID"]);
-//$UserType = ($_GET["Userlevel"]);
-//echo $UserID;
-//echo $UserType;
-//print_r($_POST);
-$sql = "SELECT * FROM `user` WHERE `User_ID`= '" . $UserID . "'"; // alt  + 96
+
+$sql = "SELECT * FROM `user` WHERE `User_ID`= '" . $UserID . "'";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 ?>
-
+<link rel="icon" href="img\index\logo.png">
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,27 +15,21 @@ $row = $result->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-    include('include/importcss.php'); // เรียกใช่ไฟล์ include css
+    include('include/importcss.php');
     ?>
-    <title>Profile</title>
+    <title>จัดการสมาชิก</title>
     <?php
-    //session_start();    
+
     include('include/navber.php');
 
     if (!isset($_SESSION["ID"])) {
         header('location:index.php');
     }
-    $sql = "SELECT * FROM `user` WHERE `User_ID`= '" . $UserID . "'"; // alt  + 96
+    $sql = "SELECT * FROM `user` WHERE `User_ID`= '" . $_GET["UserID"] . "'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
-    // echo ('<pre>');
-    //print_r($row);
-    // echo ('</pre>');
 
 
-    //echo $result->num_rows;  
-
-    //print_r($row);
     ?>
 </head>
 
@@ -58,13 +49,7 @@ $row = $result->fetch_assoc();
             <img src="img\profile\<?php echo $row['User_Photo']; ?>" alt="profile.png"
                 class="img-profile rounded-circle ">
 
-            <!-- Button trigger modal -->
-
-
-
         </div>
-
-
 
 
         <form class="form" id="Formupdatausertype" method="post"
@@ -73,8 +58,8 @@ $row = $result->fetch_assoc();
             <label class="textprofile ">ชื่อของคุณ</label>
             <div class="row ">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="ชื่อ" maxlength="30"
-                        value="<?php echo $row['User_Firstname']; ?> " name="fname" id="fname" disabled>
+                    <input type="text" class="form-control" placeholder="ชื่อ" id="fname"
+                        value="<?php echo $row['User_Firstname']; ?> " name="fname" maxlength="30" disabled>
 
                 </div>
                 <div class="col">
@@ -154,7 +139,7 @@ $row = $result->fetch_assoc();
 
 
         <?php
-        include('include/importjavascript.php'); // เรียกใช่ไฟล์ include javascript
+        include('include/importjavascript.php');
         ?>
 
 

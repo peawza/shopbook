@@ -1,63 +1,22 @@
 <?php
-
-
-
-
-
-
-
-
-
-
-
-
 require_once('php\condbbook.php');
-//$connect = mysqli_connect("localhost", "root", "", "testing");
-//$connect = mysqli_connect("localhost", "root", "", "shop");
-//$query = "SELECT * FROM producttype ORDER BY `Type_ID` DESC"; // แก้ที่อยู่
-//$result = mysqli_query($conn, $query);
-
-
-//$rowproduct = mysqli_fetch_array($resultproduct);
-/*
-echo '<pre>';
-//print_r($resultproduct);
-$rowproduct = mysqli_fetch_array($resultproduct);
-print_r($rowproduct);
-//echo $rowproduct["Type_Name"];
-
-while ($rowproduct = mysqli_fetch_array($resultproduct)) {
-    echo "<br>";
-    echo ($rowproduct["Product_ID"]);
-}
-echo '</pre>';
-*/
-
-
-
 ?>
-
-
-
 
 
 <!DOCTYPE html>
 <html lang="en">
+<link rel="icon" href="img\index\logo.png">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>รายงานหนังสือหาย</title>
     <?php
 
     include('include\importcss.php');
     include('include\navber.php');
 
-    //print_r($_SESSION);
-    //$_SESSION['ses_php_var'] = $_GET['sendVal'];
-    //$_SESSION['ses_php_var'] = $_POST['sendVal'];
-    //$_SESSION['Typeid'] = $_POST['Typeid'];
-    //print_r($_POST);
+
     ?>
 </head>
 
@@ -107,25 +66,7 @@ echo '</pre>';
 
 
                         while ($rowproduct = mysqli_fetch_array($resultproduct)) {
-                            /*
-                            echo '<pre>';
-                            print_r($rowproduct);
-                            echo '<pre>';                            
-                            [0] => 3
 
-                            [Product_ID] => 3
-                            [1] => sadsazzza
-                            [Product_Name] => sadsazzza
-                            [2] => 9091656887235.png
-                            [Product_Photo] => 9091656887235.png
-                            [3] => 75
-                            [Product_Balance] => 75
-                            [4] => 2
-                            [amount] => 2
-                            [5] => 402
-                            [price] => 402
-                            
-                            */
                         ?>
                         <tr>
                             <th width="10%" class="text-center"><img class="img-responsive"

@@ -1,52 +1,5 @@
 <?php
 require_once('php\condbbook.php');
-//$connect = mysqli_connect("localhost", "root", "", "testing");
-//$connect = mysqli_connect("localhost", "root", "", "shop");
-//$query = "SELECT * FROM producttype ORDER BY `Type_ID` DESC"; // แก้ที่อยู่
-//$result = mysqli_query($conn, $query);
-
-
-//$rowproduct = mysqli_fetch_array($resultproduct);
-/*
-echo '<pre>';
-//print_r($resultproduct);
-$rowproduct = mysqli_fetch_array($resultproduct);
-print_r($rowproduct);
-//echo $rowproduct["Type_Name"];
-
-while ($rowproduct = mysqli_fetch_array($resultproduct)) {
-    echo "<br>";
-    echo ($rowproduct["Product_ID"]);
-}
-echo '</pre>';
-
-Array
-(
-    [nameproduct] => sadsazzz
-    [addressuser] => ฟฟฟฟฟฟฟ
-    [numberphone] => 0827957256
-    [Delivery] => 1
-    [Totalprice] => 700
-    [submitcart] => 
-)
-
-Array ( [Delivery_ID] => 1 
-[Delivery_Name] => EMS 
-[Delivery_Price] => 200 )
-
-*/
-//echo '<pre>';
-//print_r($_POST);
-//echo $_POST['Delivery'];
-//echo '</pre>';
-//$sqlselect = ("SELECT `Delivery_ID`, `Delivery_Name`, `Delivery_Price` FROM `delivery` WHERE `Delivery_ID` = '" . $_POST['Delivery'] . "' ");
-//$resultselect = $conn->query($sqlselect);
-//$rowselect = $resultselect->fetch_assoc();
-//print_r($rowselect);
-
-//print_r($_POST);
-
-
 
 ?>
 
@@ -69,9 +22,7 @@ Array ( [Delivery_ID] => 1
     include('include\importcss.php');
     include('include\navber.php');
 
-    // echo '<pre>';
-    //print_r($_SESSION);
-    //echo '</pre>';
+
 
 
 
@@ -90,11 +41,11 @@ Array ( [Delivery_ID] => 1
 
         if (isset($_POST["updatecart"])) {
             if ($_POST["updatecart"] == "updatecart") {
-                //echo '1234';
+
                 $id = 0;
                 $dataquantity = 0;
 
-                // name="quantity<?php echo $quantity++ 
+
 
                 foreach ($_SESSION["shopping_cart"] as $keys => $values) {
                     if ($_SESSION["shopping_cart"][$keys]['item_id'] == $_POST["product_id" . $id++]) {
@@ -124,12 +75,12 @@ Array ( [Delivery_ID] => 1
 
 
     <?php
-    $id = 0; //1
-    $name = 0; //2
-    $price = 0; //3                                        
-    $quantity = 0; //4
-    $photo = 0; //5
-    $Balance = 0; //6
+    $id = 0;
+    $name = 0;
+    $price = 0;
+    $quantity = 0;
+    $photo = 0;
+    $Balance = 0;
 
 
 
@@ -207,17 +158,7 @@ Array ( [Delivery_ID] => 1
                                             value="<?php echo $values["item_Balance"] ?>">
                                         <input type="hidden" name="side_name<?php echo $i ?>"
                                             value="<?php echo $values["item_Balance"] ?>">
-                                        <!--
-                                        side_name
-                                        
-                                        $_POST["product_id" . $id++])
-                                                    'item_id'            =>    $_GET["id"],1
-                                                    'item_name'            =>    $_POST["hidden_name"],2
-                                                    'item_price'        =>    $_POST["hidden_price"],3
-                                                    'item_quantity'        =>    $_POST["quantity"],4
-                                                    'item_photo' =>     $_POST['hidden_photo'],5
-                                                    'item_Balance' =>     $_POST['hidden_Balance']6
-                                        -->
+
                                     </div>
                                 </div>
 
@@ -241,7 +182,7 @@ Array ( [Delivery_ID] => 1
                             }
 
                             ?>
-                        <!-- END PRODUCT -->
+
 
                         <div class=" text-right ml-3  " style="margin: 10px">
                             การสั่งซื้อ: <b><?php echo $sumquantity ?> รายการ</b>

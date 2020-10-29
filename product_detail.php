@@ -1,26 +1,11 @@
 <?php
 require_once("php/condbbook.php");
 
-//$sql = "SELECT * FROM `warranty` ORDER BY `warranty`.`Warranty_ID` ASC";
-//$query = mysqli_query($conn, $sql);
-
 ?>
 
 
 <?php
 
-
-
-
-//เทส
-//$connect = mysqli_connect("localhost", "root", "1234", "shop");
-
-//echo ('<pre>');
-//print_r($_POST);
-//print_r($_GET["id_product"]);
-//print_r($_GET);
-//print_r($_SESSION);
-//echo ('</pre>');
 
 if (isset($_POST["add_to_cart"])) {
     if (isset($_SESSION["shopping_cart"])) {
@@ -70,13 +55,6 @@ if (isset($_GET["action"])) {
 
 
 
-
-
-
-
-//เทส
-
-
 ?>
 
 
@@ -92,9 +70,9 @@ if (isset($_GET["id_product"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-        //echo "111111111111111111111111";
+
         include('include/importcss.php');
-        include('include\navber.php'); // เรียกใช่ไฟล์ include css    
+        include('include\navber.php');     
         ?>
     <title>HOME</title>
 </head>
@@ -141,9 +119,9 @@ if (isset($_GET["id_product"])) {
     <body>
 
         <?php
-            //echo '<pre>', print_r($_POST), '</pre>';
+           
 
-            $sql = "SELECT * FROM `product` WHERE `Product_ID`= '" . $_GET["id_product"] . "'"; // alt  + 96
+            $sql = "SELECT * FROM `product` WHERE `Product_ID`= '" . $_GET["id_product"] . "'"; 
             $result = $conn->query($sql);
             $row = $result->fetch_assoc();
             ?>

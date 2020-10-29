@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once('php\condbbook.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,42 +8,42 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> <!-- link เลือก css-->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/font-awesome5/css/fontawesome-all.css">
-    <link rel="stylesheet" href="include/CSS/styles.css?v=<?php echo filemtime('include/CSS/styles.css'); ?>"
-        type=" text/css">
-    <title>HOME</title>
+    <link rel="icon" href="img\index\logo.png">
+    <link rel="stylesheet" href="include/CSS/styles.css?v=<?php echo filemtime('include/CSS/styles.css'); ?>" type=" text/css">
+    <title>ระบบร้านเช่าหนังสือ</title>
 </head>
 
 <body>
     <?php
 
-
-    include('include/navber.php'); // เรียกใช่ไฟล์ include
-    //print_r($_SESSION['Email']);
-    //echo $_SESSION['id'];
-    //echo $_SESSION['name'];
+    include('include/navber.php');
     ?>
+
 
     <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div id="imglist" class="carousel-item active " data-interval="1000">
 
-                <img src="img\index\what2.png" class="d-block  img-fluid imglist" alt="...">
+                <img src="img\index\headweb1.png" class="d-block  img-fluid imglist" alt="...">
 
             </div>
             <div id="imglist" class="carousel-item " data-interval="1000">
 
-                <img src="img\index\indexhome.jpg" class="d-block  img-fluid  imglist" alt="...">
+                <img src="img\index\headweb2.png" class="d-block  img-fluid  imglist" alt="...">
 
 
             </div>
             <div id="imglist" class="carousel-item " data-interval="1000">
 
-                <img src="img\index\indexhome2.jpg" class="d-block    img-fluid imglist" alt="...">
-
-
+                <img src="img\index\headweb3.png" class="d-block    img-fluid imglist" alt="...">
             </div>
+            <div id="imglist" class="carousel-item " data-interval="1000">
+
+                <img src="img\index\headweb4.png" class="d-block    img-fluid imglist" alt="...">
+            </div>
+
         </div>
 
 
@@ -59,243 +59,102 @@ session_start();
     </div>
 
 
-    <div class="jumbotron jumbotron-fluid text-center">
+    <?php
+
+    function showtopproduct($tital, $sql)
+    {
+
+    ?>
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h1 class="display-4"><?php echo ($tital) ?></h1>
+        </div>
         <div class="container">
-            <h1 class="display-4">ยินดีต้อนรับ</h1>
-            <p class="lead"></p>
-        </div>
-    </div>
+            <div class="card-deck mb-3 text-center">
+                <?php
+                $connect = mysqli_connect("localhost", "root", "", "shopbook");
+                $resultproduct = mysqli_query($connect, $sql);
+                while ($row = mysqli_fetch_array($resultproduct)) {
 
-    <h1 class="text-justify px-5">สินค้าขายดี</h1>
-    <br>
-    <br>
+                ?>
 
 
-    <div class="container-fluid">
-        <div class="row blog">
-            <div class="col-md-12">
-                <div id="blogCarousel" class="carousel slide" data-ride="carousel">
-
-                    <ol class="carousel-indicators">
-                        <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#blogCarousel" data-slide-to="1"></li>
-                    </ol>
-
-                    <!-- Carousel items -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-
-                            <div class="row">
+                    <div class="card mb-4 shadow-sm ">
+                        <div class="card-header">
+                            <div style="height: 50px">
                                 <?php
-                                $conndata = new mysqli('localhost', 'root', '1234', 'shop');
-                                $conndata->set_charset("utf8");
-                                $i = 0;
-                                /*
-                        
-                        $selectTypeproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Type_ID` = '" . $_GET['typeproduct'] . "' ";
-                        */
-                                $selectproduct = "SELECT `ordersalesdetail`.`product_ID`, SUM(`ordersalesDetail_unit`) `orderTotal`,`product`.`Product_Photo` FROM `ordersalesdetail`,`product` WHERE `product`.`Product_ID`= `ordersalesdetail`.`product_ID` GROUP BY product_ID ORDER BY `orderTotal` DESC LIMIT 12";
-                                $resultproduct = mysqli_query($conndata, $selectproduct);
-                                while ($row = mysqli_fetch_array($resultproduct)) {
-                                    //$row["Type_ID"];
-                                    //  <a href="php/delete.php?Warranty_ID=<?php
-                                    // echo $row["Warranty_ID"];                           
-                                    //<i class=" fas fa-trash-alt"></i></a>
-
-                                    if ($i <= 5) {
+                                $len = strlen($row['Product_Name']);
+                                if ($len <= 30) {
                                 ?>
-
-
-                                <div class="col-md-2">
-                                    <a href="product_detail.php?id_product=<?php echo $row['product_ID'] ?>">
-                                        <img src="img\product\<?php echo $row['Product_Photo'] ?>" alt="Image"
-                                            class="cardproductindex img-fluid">
-                                    </a>
-                                </div>
+                                    <h5 class="my-0 font-weight-normal"><?php echo $row['Product_Name'] ?></h5>
+                                    <br>
 
                                 <?php
-                                    }
-                                    $i++;
                                 }
                                 ?>
 
-                            </div>
-                            <!--.row-->
-                        </div>
-                        <!--.item-->
-
-                        <div class="carousel-item">
-                            <div class="row">
                                 <?php
-                                $conndata = new mysqli('localhost', 'root', '1234', 'shop');
-                                $conndata->set_charset("utf8");
-                                $x = 0;
-                                /*
-                        
-                        $selectTypeproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Type_ID` = '" . $_GET['typeproduct'] . "' ";
-                        */
-                                $selectproduct = "SELECT `ordersalesdetail`.`product_ID`, SUM(`ordersalesDetail_unit`) `orderTotal`,`product`.`Product_Photo` FROM `ordersalesdetail`,`product` WHERE `product`.`Product_ID`= `ordersalesdetail`.`product_ID` GROUP BY product_ID ORDER BY `orderTotal` DESC LIMIT 12";
-                                $resultproduct = mysqli_query($conndata, $selectproduct);
-                                while ($row = mysqli_fetch_array($resultproduct)) {
-                                    //$row["Type_ID"];
-                                    //  <a href="php/delete.php?Warranty_ID=<?php
-                                    // echo $row["Warranty_ID"];                           
-                                    //<i class=" fas fa-trash-alt"></i></a>
-                                    if ($x >= 6 && $x <= 11) {
+                                $len = strlen($row['Product_Name']);
+                                if ($len > 30) {
                                 ?>
-
-
-                                <div class="col-md-2">
-                                    <a href="product_detail.php?id_product=<?php echo $row['product_ID'] ?>">
-                                        <img src="img\product\<?php echo $row['Product_Photo'] ?>" alt="Image"
-                                            class="cardproductindex img-fluid">
-                                    </a>
-                                </div>
-
+                                    <h5 class="my-0 font-weight-normal"><?php echo $row['Product_Name'] ?></h5>
                                 <?php
-                                    }
-                                    $x++;
                                 }
+
+
+
                                 ?>
+                            </div>
+
+
+                        </div>
+                        <div class="card-body">
+                            <a href="product_detail.php?id_product=<?php echo $row['Product_ID'] ?>">
+                                <img src="img\product\<?php echo $row['Product_Photo'] ?>" alt="Image" class="cardproductindex img-fluid" height="300" width="300">
+                            </a>
+                            <div style="height: 90px">
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <b>
+                                        <?php echo $row['Product_Name'] ?>
+                                    </b>
+                                    <li>เช่าได้ <?php echo $row['Product_rentday'] ?> วัน</li>
+                                    <li>ราคาเช่า <?php echo $row['Product_Price'] ?> บาท</li>
+
+                                </ul>
 
                             </div>
+
+                            <a href="product_detail.php?id_product=<?php echo $row['Product_ID'] ?>" class="btn btn-lg btn-block btn-outline-primary">
+
+                                ดูรายละเอียด
+                            </a>
                         </div>
-                        <!--.row-->
                     </div>
-                    <!--.item-->
 
-                </div>
-                <!--.carousel-inner-->
+                <?php }
+                ?>
+
             </div>
-            <!--.Carousel-->
 
+        <?php
+
+    }
+
+    showtopproduct('หนังสือใหม่', 'SELECT * FROM `product` ORDER BY `product`.`Product_datesave` DESC LIMIT 3');
+    showtopproduct('หนังสือยอดนิยม', 'SELECT `orderrent`.`orderrent_productid`, SUM(`orderrent_amount`) AS amount, `product`.`Product_Photo`, `product`.`Product_rentday`, `product`.`Product_Name`, `product`.`Product_Price`, `product`.`Product_ID` FROM `orderrent`, `product` 
+    WHERE `product`.`Product_ID` = `orderrent`.`orderrent_productid` 
+    GROUP BY `product`.`Product_ID` 
+    ORDER BY `amount` 
+    DESC LIMIT 3');
+
+
+        ?>
+
+
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+
+            <p class="float-right"><a href="#">Back to top</a></p>
+        </footer>
         </div>
-    </div>
-
-
-    <br>
-    <br>
-    <br>
-
-
-
-
-    <h1 class="text-justify px-5">สินค้าใหม่</h1>
-    <br>
-    <br>
-
-
-    <div class="container-fluid">
-        <div class="row blog">
-            <div class="col-md-12">
-                <div id="blogCarousel2" class="carousel slide" data-ride="carousel">
-
-                    <ol class="carousel-indicators">
-                        <li data-target="#blogCarousel2" data-slide-to="0" class="active"></li>
-                        <li data-target="#blogCarousel2" data-slide-to="1"></li>
-                    </ol>
-
-                    <!-- Carousel items -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-
-                            <div class="row">
-                                <?php
-                                $conndata = new mysqli('localhost', 'root', '1234', 'shop');
-                                $conndata->set_charset("utf8");
-                                $i = 0;
-                                /*
-                        
-                        $selectTypeproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Type_ID` = '" . $_GET['typeproduct'] . "' ";
-                        */
-                                $selectproduct = "SELECT * FROM `product` ORDER BY `product`.`date_save` DESC";
-                                $resultproduct = mysqli_query($conndata, $selectproduct);
-                                while ($row = mysqli_fetch_array($resultproduct)) {
-                                    //$row["Type_ID"];
-                                    //  <a href="php/delete.php?Warranty_ID=<?php
-                                    // echo $row["Warranty_ID"];                           
-                                    //<i class=" fas fa-trash-alt"></i></a>
-
-                                    if ($i <= 5) {
-
-                                ?>
-
-
-                                <div class="col-md-2">
-                                    <a href="product_detail.php?id_product=<?php echo $row['Product_ID'] ?>">
-                                        <img src="img\product\<?php echo $row['Product_Photo'] ?>" alt="Image"
-                                            class="cardproductindex img-fluid">
-                                    </a>
-                                </div>
-
-                                <?php
-                                    }
-                                    $i++;
-                                }
-                                ?>
-
-                            </div>
-                            <!--.row-->
-                        </div>
-                        <!--.item-->
-
-                        <div class="carousel-item">
-                            <div class="row">
-                                <?php
-                                $conndata = new mysqli('localhost', 'root', '1234', 'shop');
-                                $conndata->set_charset("utf8");
-                                $x = 0;
-                                /*
-                        
-                        $selectTypeproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Type_ID` = '" . $_GET['typeproduct'] . "' ";
-                        */
-                                $selectproduct = "SELECT * FROM `product` ORDER BY `product`.`date_save` DESC";
-                                $resultproduct = mysqli_query($conndata, $selectproduct);
-                                while ($row = mysqli_fetch_array($resultproduct)) {
-                                    //$row["Type_ID"];
-                                    //  <a href="php/delete.php?Warranty_ID=<?php
-                                    // echo $row["Warranty_ID"];                           
-                                    //<i class=" fas fa-trash-alt"></i></a>
-
-                                    if ($x >= 6 && $x <= 11) {
-
-
-
-                                ?>
-
-
-                                <div class="col-md-2">
-                                    <a href="product_detail.php?id_product=<?php echo $row['Product_ID'] ?>">
-                                        <img src="img\product\<?php echo $row['Product_Photo'] ?>" alt="Image"
-                                            class="cardproductindex img-fluid">
-                                    </a>
-                                </div>
-
-                                <?php
-                                    }
-                                    $x++;
-                                }
-                                ?>
-
-                            </div>
-                        </div>
-                        <!--.row-->
-                    </div>
-                    <!--.item-->
-
-                </div>
-                <!--.carousel-inner-->
-            </div>
-            <!--.Carousel-->
-
-        </div>
-    </div>
-
-
-
-    <br>
-    <br>
-    <br>
 
 
 
@@ -304,13 +163,9 @@ session_start();
 
 
 
-
-
-
-
-    <script src="node_modules/jquery/dist/jquery.min.js"></script> <!-- sc เลือก src -->
-    <script src="node_modules/popper.js/dist/popper.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/popper.js/dist/popper.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>
 

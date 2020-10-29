@@ -1,26 +1,18 @@
 <?php
 require_once("php/condbbook.php");
 
-//$sql = "SELECT * FROM `warranty` ORDER BY `warranty`.`Warranty_ID` ASC";
-//$query = mysqli_query($conn, $sql);
+
 
 ?>
+<link rel="icon" href="img\index\logo.png">
 <?php
 include('include/navber.php');
-// เรียกใช่ไฟล์ include navber
 ?>
 
 <?php
 
 
-//เทส
-//$connect = mysqli_connect("localhost", "root", "1234", "shop");
 
-//echo ('<pre>');
-//print_r($_POST);
-//print_r($_GET);
-//print_r($_SESSION);
-//echo ('</pre>');
 
 if (isset($_POST["add_to_cart"])) {
     if (isset($_SESSION["shopping_cart"])) {
@@ -74,7 +66,6 @@ if (isset($_GET["action"])) {
 
 
 
-//เทส
 
 
 ?>
@@ -90,10 +81,10 @@ if (isset($_GET["action"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-    //echo "111111111111111111111111";
-    include('include/importcss.php'); // เรียกใช่ไฟล์ include css    
+
+    include('include/importcss.php');
     ?>
-    <title>HOME</title>
+    <title>รายการสินค้า</title>
 </head>
 
 
@@ -109,18 +100,16 @@ if (isset($_GET["action"])) {
             <?php
             ini_set('display_errors', 1);
             error_reporting(~0);
-            //echo $_POST;
+
             $strKeyword = null;
 
 
             ?>
 
-            <form name="frmSearch" method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" <div
-                class="form-group row">
-                <label for="inputPassword" class="col-2 col-form-label py-2 ">ค้นหาชื่อสินค้า</label>
+            <form name="frmSearch" method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" <div class="form-group row">
+                <label for="inputPassword" class="col-2 col-form-label py-2 ">ค้นหาชื่อหนังสือ</label>
                 <div class="col-7">
-                    <input type="text" class="form-control" id="txtKeyword" name="txtKeyword"
-                        placeholder="ค้นหาชื่อสินค้า" maxlength="50" value="<?php echo $strKeyword; ?>">
+                    <input type="text" class="form-control" id="txtKeyword" name="txtKeyword" placeholder="ค้นหาชื่อหนังสือ" maxlength="50" value="<?php echo $strKeyword; ?>">
                 </div>
                 <div class="col-3">
                     <input class="btn btn-light" type="submit" value="Search">
@@ -130,10 +119,10 @@ if (isset($_GET["action"])) {
 
         <?php
         if (isset($_POST["txtKeyword"])) {
-            //echo $_POST["txtKeyword"];
+
             $strKeyword = $_POST["txtKeyword"];
             $keyword =  ($strKeyword);
-            //echo $keyword;
+
             $selectTypeproduct = "SELECT * FROM product  WHERE `product`.`Product_Name` LIKE '%" . $keyword . "%' ";
             $resultTypeproduct = mysqli_query($conn, $selectTypeproduct);
             $sql2 = "SELECT * FROM product  WHERE `product`.`Product_Name` LIKE '%" . $keyword . "%' ";
@@ -145,16 +134,16 @@ if (isset($_GET["action"])) {
 
             if (!isset($ckrow)) {
 
-                //echo 'ไม่พบสินค้า';
+
         ?>
-        <div class="col-7 text-center mx-auto ml-2">
-            <div class="alert alert-danger alert-dismissible fade show " role="alert">
-                !!!! ไม่พบสินค้าที่ค้นหาในระบบ
-                <button type="button" class="close" -dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </div>
+                <div class="col-7 text-center mx-auto ml-2">
+                    <div class="alert alert-danger alert-dismissible fade show " role="alert">
+                        !!!! ไม่พบสินค้าที่ค้นหาในระบบ
+                        <button type="button" class="close" -dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
 
 
         <?php
@@ -196,45 +185,37 @@ if (isset($_GET["action"])) {
 
 
 
-    <?php
-    //echo '<pre>', print_r($_POST), '</pre>';
-    ?>
+
 
     <?php
-    //$conn = new mysqli('localhost', 'root', '1234', 'shop');
-    //$conn->set_charset("utf8");
+
 
 
 
     if (isset($_GET['typeproduct'])) {
 
-        // ปิด1 
-        // $selectTypeproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Type_ID` = '" . $_GET['typeproduct'] . "' ";
-        // $sql = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Type_ID` = '" . $_GET['typeproduct'] . "' ";
-        // $result = $conn->query($sql);
-        // $rowresult = $result->fetch_assoc();
+
     ?>
 
 
 
-    <div class="container-fluid py-2">
-        <div class="card col-sm-auto col-md-auto">
-            <div class="card-header">
-                ประเภทสินค้า <?php echo $rowresult['Type_Name']; ?>
-            </div>
-            <div class="card-body">
-                <div class="row">
+        <div class="container-fluid py-2">
+            <div class="card col-sm-auto col-md-auto">
+                <div class="card-header">
+                    ประเภทสินค้า <?php echo $rowresult['Type_Name']; ?>
+                </div>
+                <div class="card-body">
+                    <div class="row">
 
                     <?php
                 } else {
-                    // ปิด1
-                    //  $selectTypeproduct = "SELECT * FROM product ";
+
                     ?>
 
-                    <div class="container-fluid py-2">
-                        <div class="card">
-                            <div class="card-header">
-                                <?php
+                        <div class="container-fluid py-2">
+                            <div class="card">
+                                <div class="card-header">
+                                    <?php
                                     if (isset($_POST["txtKeyword"])) {
                                         echo 'ค้นหาสินค้า';
                                     } else {
@@ -243,148 +224,120 @@ if (isset($_GET["action"])) {
                                     ?>
 
 
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
 
-                                    <?php
+                                        <?php
                                     }
-                                    //$selectTypeproduct = "SELECT * FROM product";
-                                    // ปิด1
-                                    //$resultTypeproduct = mysqli_query($conn, $selectTypeproduct);
+
                                     if (isset($_GET['typeproduct'])) {
-                                        //echo $_GET['typeproduct'];
+
                                         while ($row = mysqli_fetch_array($resultTypeproduct)) {
                                         ?>
 
-                                    <section class="col-6 col-sm-4 col-xl-3 p-2">
-                                        <form
-                                            action="shopproduct.php?action=add&id=<?php echo $row["Product_ID"]; ?>&&typeproduct=<?php echo $_GET['typeproduct'] ?>"
-                                            method="post">
-                                            <div class="card  cardphotoproduct  cardproduct">
-                                                <div class="container">
-                                                    <div class="content-item cardphotoproduct">
-                                                        <div class="photozoom  mx-auto">
-                                                            <a href=" product_detail.php?id_product=<?php echo $row['Product_ID'] ?>"
-                                                                class="warpper-card-img">
-                                                                <img class="card-img-top photoproductzoom img-fluid"
-                                                                    src="img\product\<?php echo $row['Product_Photo'] ?>"
-                                                                    alt="Card image Product">
-                                                            </a>
+                                            <section class="col-6 col-sm-4 col-xl-3 p-2">
+                                                <form action="shopproduct.php?action=add&id=<?php echo $row["Product_ID"]; ?>&&typeproduct=<?php echo $_GET['typeproduct'] ?>" method="post">
+                                                    <div class="card  cardphotoproduct  cardproduct">
+                                                        <div class="container">
+                                                            <div class="content-item cardphotoproduct">
+                                                                <div class="photozoom  mx-auto">
+                                                                    <a href=" product_detail.php?id_product=<?php echo $row['Product_ID'] ?>" class="warpper-card-img">
+                                                                        <img class="card-img-top photoproductzoom img-fluid" src="img\product\<?php echo $row['Product_Photo'] ?>" alt="Card image Product">
+                                                                    </a>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body   py-2 ">
-                                                    <h4 class="text-product" style="height: 90px">
-                                                        <?php echo $row['Product_Name'] ?> </h4>
-                                                    <strong class="text-price"> ราคา
-                                                        <?php echo $row['Product_Price'] ?>
-                                                        บาท </strong>
-                                                    <div class=" py-2">
-                                                        <input type="number" class="form-control col-3" id="quantity"
-                                                            name="quantity" value="1" min="1"
-                                                            max="<?php echo $row["Product_Balance"]; ?>">
-                                                    </div>
-                                                    <input type="hidden" name="hidden_name"
-                                                        value="<?php echo $row["Product_Name"]; ?>" />
+                                                        <div class="card-body   py-2 ">
+                                                            <h4 class="text-product" style="height: 90px">
+                                                                <?php echo $row['Product_Name'] ?> </h4>
+                                                            <strong class="text-price"> ราคา
+                                                                <?php echo $row['Product_Price'] ?>
+                                                                บาท </strong>
+                                                            <div class=" py-2">
+                                                                <input type="number" class="form-control col-3" id="quantity" name="quantity" value="1" min="1" max="<?php echo $row["Product_Balance"]; ?>">
+                                                            </div>
+                                                            <input type="hidden" name="hidden_name" value="<?php echo $row["Product_Name"]; ?>" />
 
-                                                    <input type="hidden" name="hidden_price"
-                                                        value="<?php echo $row["Product_Price"]; ?>" />
+                                                            <input type="hidden" name="hidden_price" value="<?php echo $row["Product_Price"]; ?>" />
 
-                                                    <input type="hidden" name="hidden_photo"
-                                                        value="<?php echo $row['Product_Photo']; ?>" />
+                                                            <input type="hidden" name="hidden_photo" value="<?php echo $row['Product_Photo']; ?>" />
 
-                                                    <input type="hidden" name="hidden_Balance"
-                                                        value="<?php echo $row['Product_Balance']; ?>" />
-                                                    <div class="row py-4">
+                                                            <input type="hidden" name="hidden_Balance" value="<?php echo $row['Product_Balance']; ?>" />
+                                                            <div class="row py-4">
 
-                                                        <a href="product_detail.php?id_product=<?php echo $row['Product_ID'] ?>"
-                                                            class="btn btn-secondary    btn-lg col-5 float-right textproduct text-center">
-                                                            <i class="fa fa-eye"></i>
-                                                            ดูรายละเอียด
-                                                        </a>
-                                                        <div class="col"></div>
-                                                        <?php if (isset($_SESSION['UserType'])) {
+                                                                <a href="product_detail.php?id_product=<?php echo $row['Product_ID'] ?>" class="btn btn-secondary    btn-lg col-5 float-right textproduct text-center">
+                                                                    <i class="fa fa-eye"></i>
+                                                                    ดูรายละเอียด
+                                                                </a>
+                                                                <div class="col"></div>
+                                                                <?php if (isset($_SESSION['UserType'])) {
                                                                     if ($_SESSION['UserType'] == 'admin') {
                                                                         # code...
 
 
                                                                 ?>
 
-                                                        <button type="submit" name="add_to_cart" value="Add to Cart"
-                                                            class="btn btn-success   btn-lg col-5 float-right textproduct text-center"><i
-                                                                class="fa fa-shopping-cart"></i>
-                                                            เช่าหนังสือ </button>
+                                                                        <button type="submit" name="add_to_cart" value="Add to Cart" class="btn btn-success   btn-lg col-5 float-right textproduct text-center"><i class="fa fa-shopping-cart"></i>
+                                                                            เช่าหนังสือ </button>
 
 
-                                                        <?php
+                                                                    <?php
 
                                                                     }
                                                                 } else { ?>
 
 
 
-                                                        <?php } ?>
-                                                    </div>
+                                                                <?php } ?>
+                                                            </div>
 
 
 
-                                        </form>
-                                    </section>
-                                    <?php
-                                        } //while
-                                    } //เช็คget
-                                    else {
+                                                </form>
+                                            </section>
+                                        <?php
+                                        }
+                                    } else {
                                         while ($row = mysqli_fetch_array($resultTypeproduct)) {
                                         ?>
 
-                                    <section class="col-6 col-sm-4 col-xl-3 p-2">
-                                        <form action="shopproduct.php?action=add&id=<?php echo $row["Product_ID"]; ?>"
-                                            method="post">
-                                            <div class="card  cardphotoproduct cardproduct">
-                                                <div class="container">
-                                                    <div class="content-item cardphotoproduct">
-                                                        <div class="photozoom  mx-auto">
-                                                            <a href=" product_detail.php?id_product=<?php echo $row['Product_ID'] ?>"
-                                                                class="warpper-card-img">
-                                                                <img class="card-img-top photoproductzoom img-fluid"
-                                                                    src="img\product\<?php echo $row['Product_Photo'] ?>"
-                                                                    alt="Card image Product">
-                                                            </a>
+                                            <section class="col-6 col-sm-4 col-xl-3 p-2">
+                                                <form action="shopproduct.php?action=add&id=<?php echo $row["Product_ID"]; ?>" method="post">
+                                                    <div class="card  cardphotoproduct cardproduct">
+                                                        <div class="container">
+                                                            <div class="content-item cardphotoproduct">
+                                                                <div class="photozoom  mx-auto">
+                                                                    <a href=" product_detail.php?id_product=<?php echo $row['Product_ID'] ?>" class="warpper-card-img">
+                                                                        <img class="card-img-top photoproductzoom img-fluid" src="img\product\<?php echo $row['Product_Photo'] ?>" alt="Card image Product">
+                                                                    </a>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body   py-2 ">
-                                                    <h4 class="text-product" style="height: 90px">
-                                                        <?php echo $row['Product_Name'] ?> </h4>
-                                                    <strong class="text-price"> ราคา
-                                                        <?php echo $row['Product_Price'] ?>
-                                                        บาท </strong>
-                                                    <div class=" py-2">
-                                                        <input type="number" class="form-control col-3" id="quantity"
-                                                            name="quantity" value="1" min="1"
-                                                            max="<?php echo $row["Product_Balance"]; ?>">
-                                                    </div>
-                                                    <input type="hidden" name="hidden_name"
-                                                        value="<?php echo $row["Product_Name"]; ?>" />
+                                                        <div class="card-body   py-2 ">
+                                                            <h4 class="text-product" style="height: 90px">
+                                                                <?php echo $row['Product_Name'] ?> </h4>
+                                                            <strong class="text-price"> ราคา
+                                                                <?php echo $row['Product_Price'] ?>
+                                                                บาท </strong>
+                                                            <div class=" py-2">
+                                                                <input type="number" class="form-control col-3" id="quantity" name="quantity" value="1" min="1" max="<?php echo $row["Product_Balance"]; ?>">
+                                                            </div>
+                                                            <input type="hidden" name="hidden_name" value="<?php echo $row["Product_Name"]; ?>" />
 
-                                                    <input type="hidden" name="hidden_price"
-                                                        value="<?php echo $row["Product_Price"]; ?>" />
+                                                            <input type="hidden" name="hidden_price" value="<?php echo $row["Product_Price"]; ?>" />
 
-                                                    <input type="hidden" name="hidden_photo"
-                                                        value="<?php echo $row['Product_Photo']; ?>" />
+                                                            <input type="hidden" name="hidden_photo" value="<?php echo $row['Product_Photo']; ?>" />
 
-                                                    <input type="hidden" name="hidden_Balance"
-                                                        value="<?php echo $row['Product_Balance']; ?>" />
-                                                    <div class="row  py-5 my-auto">
+                                                            <input type="hidden" name="hidden_Balance" value="<?php echo $row['Product_Balance']; ?>" />
+                                                            <div class="row  py-5 my-auto">
 
-                                                        <a href="product_detail.php?id_product=<?php echo $row['Product_ID'] ?>"
-                                                            class="btn btn-secondary    btn-lg col-5 float-right textproduct text-center">
-                                                            <i class="fa fa-eye"></i>
-                                                            ดูรายละเอียด
-                                                        </a>
-                                                        <div class="col"></div>
-                                                        <?php
+                                                                <a href="product_detail.php?id_product=<?php echo $row['Product_ID'] ?>" class="btn btn-secondary    btn-lg col-5 float-right textproduct text-center">
+                                                                    <i class="fa fa-eye"></i>
+                                                                    ดูรายละเอียด
+                                                                </a>
+                                                                <div class="col"></div>
+                                                                <?php
 
 
 
@@ -395,36 +348,34 @@ if (isset($_GET["action"])) {
                                                                         if (isset($_SESSION['ID']) and $_SESSION['UserType'] == 'admin') {
                                                                 ?>
 
-                                                        <button type="submit" name="add_to_cart" value="Add to Cart"
-                                                            class="btn btn-success   btn-lg col-5 float-right textproduct text-center"><i
-                                                                class="fa fa-shopping-cart"></i>
-                                                            เช่าหนังสือ </button>
+                                                                            <button type="submit" name="add_to_cart" value="Add to Cart" class="btn btn-success   btn-lg col-5 float-right textproduct text-center"><i class="fa fa-shopping-cart"></i>
+                                                                                เช่าหนังสือ </button>
 
 
-                                                        <?php
+                                                                        <?php
                                                                         } else { ?>
 
 
 
-                                                        <?php }
+                                                                <?php }
                                                                     }
                                                                 }
                                                                 ?>
-                                                    </div>
+                                                            </div>
 
 
 
-                                        </form>
-                                    </section>
+                                                </form>
+                                            </section>
                                     <?php
                                         }
                                     }
                                     ?>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
 
 
@@ -433,8 +384,8 @@ if (isset($_GET["action"])) {
 
 
 
-                    <?php
-                        include('include/importjavascript.php'); // เรียกใช่ไฟล์ include javascript
+                        <?php
+                        include('include/importjavascript.php');
                         ?>
 </body>
 

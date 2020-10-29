@@ -1,27 +1,6 @@
 <?php
 require_once('php\condbbook.php');
-//$connect = mysqli_connect("localhost", "root", "", "testing");
-//$connect = mysqli_connect("localhost", "root", "", "shop");
-//$query = "SELECT * FROM producttype ORDER BY `Type_ID` DESC"; // แก้ที่อยู่
-//$result = mysqli_query($conn, $query);
 
-
-//$rowordersales = mysqli_fetch_array($resultproduct);
-/*
-echo '<pre>';
-//print_r($resultproduct);
-$rowordersales = mysqli_fetch_array($resultproduct);
-print_r($rowordersales);
-//echo $rowordersales["Type_Name"];
-
-while ($rowordersales = mysqli_fetch_array($resultproduct)) {
-    echo "<br>";
-    echo ($rowordersales["Ordersales_ID"]);
-}
-echo '</pre>';
-*/
-
-//print_r($_SESSION);
 
 ?>
 
@@ -41,11 +20,6 @@ echo '</pre>';
     include('include\importcss.php');
     include('include\navber.php');
 
-    //print_r($_SESSION);
-    //$_SESSION['ses_php_var'] = $_GET['sendVal'];
-    //$_SESSION['ses_php_var'] = $_POST['sendVal'];
-    //$_SESSION['Typeid'] = $_POST['Typeid'];
-    //print_r($_POST);
     ?>
 </head>
 
@@ -60,7 +34,7 @@ echo '</pre>';
             <?php
             ini_set('display_errors', 1);
             error_reporting(~0);
-            //echo $_POST;
+
             $strKeyword = null;
 
 
@@ -68,10 +42,10 @@ echo '</pre>';
 
             <form name="frmSearch" method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" <div
                 class="form-group row">
-                <label for="inputPassword" class="col-2 col-form-label py-2 ">ค้นหาชื่อสินค้า</label>
+                <label for="inputPassword" class="col-2 col-form-label py-2 ">ค้นหาชื่อหนังสือ</label>
                 <div class="col-7">
                     <input type="text" class="form-control" id="txtKeyword" name="txtKeyword"
-                        placeholder="ค้นหาชื่อสินค้า" maxlength="50" value="<?php echo $strKeyword; ?>">
+                        placeholder="ค้นหาชื่อหนังสือ" maxlength="50" value="<?php echo $strKeyword; ?>">
                 </div>
                 <div class="col-3">
                     <input class="btn btn-light" type="submit" value="Search">
@@ -81,12 +55,10 @@ echo '</pre>';
 
         <?php
         if (isset($_POST["txtKeyword"])) {
-            //echo $_POST["txtKeyword"];
+
             $strKeyword = $_POST["txtKeyword"];
             $keyword =  ($strKeyword);
-            //echo $keyword;
-            //$selectproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Product_Name` LIKE '%" . $keyword . "%' ";
-            //$resultproduct = mysqli_query($conn, $selectproduct);
+
 
             $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`AND`user`.`User_ID` = '" . $_SESSION['ID'] . "'AND `user`.`User_Firstname`LIKE'%" . $keyword . "%' ";
             $resultordersales = mysqli_query($conn, $selectordersales);
@@ -102,7 +74,7 @@ echo '</pre>';
 
             if (!isset($ckrow)) {
 
-                //echo 'ไม่พบสินค้า';
+
         ?>
         <div class="col-7 text-center mx-auto ml-2">
             <div class="alert alert-danger alert-dismissible fade show " role="alert">
@@ -121,8 +93,6 @@ echo '</pre>';
             }
         } else {
 
-            //$selectproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` ORDER BY `product`.`Product_Name` ASC";
-            //$resultproduct = mysqli_query($conn, $selectproduct);
             $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID` AND`user`.`User_ID` = '" . $_SESSION['ID'] . "' ";
             $resultordersales = mysqli_query($conn, $selectordersales);
         }
@@ -158,43 +128,6 @@ echo '</pre>';
                     </thead>
                     <tbody>
                         <?php
-                        /*
-
-                        [0] => 1
-                        [orders_id] => 1
-                        [1] => 4
-                        [User_ID] => 4
-                        [2] => ฟหดกหฟดกหฟด
-                        [Order_addressuser] => ฟหดกหฟดกหฟด
-                        [3] => 2464
-                        [orders_renttotal] => 2464
-                        [4] => 0
-                        [orders_returntotal] => 0
-                        [5] => 2464
-                        [orders_sumtotal] => 2464
-                        [6] => 0
-                        [orders_iscomplete] => 0
-                        [7] => 4
-                        [8] => user
-                        [User_Username] => user
-                        [9] => $2y$10$fB6aRvLojb8vG3ukgnwcle6rynH6hiaSNAOSCfskrj2DL4A6y8HM6
-                        [User_Password] => $2y$10$fB6aRvLojb8vG3ukgnwcle6rynH6hiaSNAOSCfskrj2DL4A6y8HM6
-                        [10] => ศุภชัย
-                        [User_Firstname] => ศุภชัย
-                        [11] => แจ้งอรุณ
-                        [User_Lastname] => แจ้งอรุณ
-                        [12] => 0970562607
-                        [User_Telephonenumber] => 0970562607
-                        [13] => agileza_555@hotmail.com
-                        [User_Email] => agileza_555@hotmail.com
-                        [14] => 9091310863447.jpg
-                        [User_Photo] => 9091310863447.jpg
-                        [15] => 2020-09-26
-                        [User_Createdate] => 2020-09-26
-                        [16] => admin
-                        [User_Type] => admin
-                        
-                        */
 
 
                         while ($rowordersales = mysqli_fetch_array($resultordersales)) {
@@ -244,20 +177,10 @@ echo '</pre>';
                             </td>
 
                             <td>
-                                <?php
-                                            /*
-                                            <div class="text-center">
-                                                <a href="php/delete.php?Order_ID=<?php
-                                                                                    echo $rowordersales["Ordersales_ID"];
-                                                                                    ?>" style="color:#000000" ">
-                                <i class=" fas fa-trash-alt"></i></a>
-            </div>
 
-            */
-            ?>
 
-            </td>
-            <?php
+                            </td>
+                            <?php
                                     }
 
 
@@ -265,7 +188,7 @@ echo '</pre>';
 
 
 
-            <?php
+                            <?php
 
 
 
@@ -273,14 +196,14 @@ echo '</pre>';
                             }
                         }
                             ?>
-            </tbody>
+                    </tbody>
 
 
-            </table>
+                </table>
 
 
+            </div>
         </div>
-    </div>
     </div>
 
 
@@ -370,27 +293,21 @@ echo '</pre>';
 
                     <script>
                     $(".product-file").on("change", function() {
-                        //เพิ่มรูปสินค้า ตลาส product-file-input
-                        /* console.log(
-                          $(this)
-                            .val()
-                            .split("\\")
-                            .pop()
-                        );*/
+
 
                         var filename = $(this)
                             .val()
                             .split("\\")
                             .pop();
                         $(this)
-                            .siblings(".product-label") /// แก้ตรงนี้
+                            .siblings(".product-label")
                             .html(filename);
 
                         if (this.files[0]) {
                             var reader = new FileReader();
                             $(".figure").addClass("d-block");
                             reader.onload = function(e) {
-                                //console.log(reader);
+
                                 $("#imgproduct")
                                     .attr("src", e.target.result)
                                     .width(800)
@@ -421,20 +338,7 @@ echo '</pre>';
                 </form>
 
 
-                <!--
-                    <form method="post" id="update_form" action="php/update.php">
-                    <label>ชื่อสินค้า</label>
-                    <input type="text" name="name" id="name" class="form-control" />
-                    <br />
 
-                   <input type="hidden" name="Ordersales_ID" id="Ordersales_ID" />
-                    <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />
-                </form>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-                
-                    -->
             </div>
 
         </div>

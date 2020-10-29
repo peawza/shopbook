@@ -17,24 +17,6 @@ if (isset($_POST["typeproduct_id"])) {
                 </tr>  
                
            ';
-          /*
-            <tr>  
-                     <td width="30%"><label>Address</label></td>  
-                     <td width="70%">' . $row["address"] . '</td>  
-                </tr>  
-                <tr>  
-                     <td width="30%"><label>Gender</label></td>  
-                     <td width="70%">' . $row["gender"] . '</td>  
-                </tr>  
-                <tr>  
-                     <td width="30%"><label>Designation</label></td>  
-                     <td width="70%">' . $row["designation"] . '</td>  
-                </tr>  
-                <tr>  
-                     <td width="30%"><label>Age</label></td>  
-                     <td width="70%">' . $row["age"] . ' Year</td>  
-                </tr>  
-           */
      }
      $output .= '  
            </table>  
@@ -46,15 +28,9 @@ if (isset($_POST["typeproduct_id"])) {
 
 
 if (isset($_POST["product_ID"])) {
-     //<img src="img\product\8989182539223.jpg" alt=""' . $row["Product_Photo"] . '""
-     //class="img-fluid "></img>
-     //echo 'img\product\8989182539223.jpg ';
-
-
 
      $output = '';
-     //$connect = mysqli_connect("localhost", "root", "1234", "shop");
-     //$query = "SELECT * FROM producttype WHERE `Type_ID` = '" . $_POST["typeproduct_id"] . "'";
+
      $query = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND  `product`.`Product_ID` = '" . $_POST["product_ID"] . "'";
      $result = mysqli_query($conn, $query);
      $output .= '  
@@ -126,10 +102,7 @@ if (isset($_POST["product_ID"])) {
 
 
 if (isset($_POST["ordersalesid"])) {
-     //<img src="img\product\8989182539223.jpg" alt=""' . $row["Product_Photo"] . '""
-     //class="img-fluid "></img>
-     //echo 'img\product\8989182539223.jpg ';
-     //echo  $_POST["ordersalesid"];
+
 
 
      $sumquantity = 0;
@@ -137,13 +110,10 @@ if (isset($_POST["ordersalesid"])) {
      $totaldelivery = 0;
 
      $output = '';
-     //$connect = mysqli_connect("localhost", "root", "1234", "shop");
-     //$query = "SELECT * FROM producttype WHERE `Type_ID` = '" . $_POST["typeproduct_id"] . "'";
-     //SELECT `orderrent_ID`, `product_ID`, `orderrent_unit`, `orderrentWarrantyday`, `orderrent_ price` FROM `orderrent` WHERE `orderrent_ID`=1
      $queryorder = "SELECT * FROM `orderrent`,`product` WHERE `orderrent`.`orderrent_productid`= `product`.`Product_ID` AND`orderrent_ID`='" . $_POST["ordersalesid"] . "'";
      $resultorder = mysqli_query($conn, $queryorder);
      $originalDatetoday = date("d/m/Y");
-     //$newDatetoday = date("d / m / Y", strtotime($originalDatetoday));
+
 
 
      $output .= ' <div class="container py-4">
@@ -203,13 +173,10 @@ if (isset($_POST["ordersalesid"])) {
 
 ';
           $sumquantity = $sumquantity + $rowoder["orderrent_amount"];
-          //$total = $total + $rowodersales["orderrent_ price"];
      }
 
 
-     //$sumquantity = $sumquantity + $values["item_quantity"];
-     //$total = $total + ($values["item_quantity"] * $values["item_price"]);
-     //$totaldelivery = $total + $rowselect['Delivery_Price'];
+
 
      $mama = 0;
      $selectordersales = "SELECT * FROM `orders`,`user` WHERE `user`.`User_ID`=`orders`.`User_ID`
@@ -219,7 +186,7 @@ AND`orders_id`='" . $_POST["ordersalesid"] . "'";
 
 
 
-     //ต่อ
+
      $output .= '
 
 <hr>
@@ -243,7 +210,7 @@ AND`orders_id`='" . $_POST["ordersalesid"] . "'";
 
 
 
-     ///ต่อ
+
      $output .= '
 <form action="php\insert.php" method="POST" enctype="multipart/form-data">
     <div class="modal-body">
@@ -252,7 +219,7 @@ AND`orders_id`='" . $_POST["ordersalesid"] . "'";
 
             <table class="table table-bordered">
                 <tr>
-                    <td width="30%"><label>ที่อยู่ในการจัดส่ง</label></td>
+                    <td width="30%"><label>ที่อยู่ของลูกค้า</label></td>
                     <td width="70%"> ' . $rowordersales['Order_addressuser'] . '
                     </td>
                 </tr>

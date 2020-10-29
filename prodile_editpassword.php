@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="icon" href="img\index\logo.png">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <?php
-    include('include/importcss.php'); // เรียกใช่ไฟล์ include css
+    include('include/importcss.php');
     ?>
-    <title>Profile</title>
+    <title>เเก้ไขรหัสผ่าน</title>
     <?php
     require_once('php/condbbook.php');
     include('include/navber.php');
-    //session_start();
+
 
     if (!isset($_SESSION["ID"])) {
         header('location:index.php');
     }
-    $sql = "SELECT * FROM `user` WHERE `User_ID`= '" . $_SESSION["ID"] . "'"; // alt  + 96
+    $sql = "SELECT * FROM `user` WHERE `User_ID`= '" . $_SESSION["ID"] . "'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
-    //echo $result->num_rows;
+
     if (!$result->num_rows) {
         header('location:index.php');
     }
 
-    //print_r($row);
+
     ?>
 </head>
 
@@ -78,29 +79,6 @@
             </form>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

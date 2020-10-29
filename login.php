@@ -8,21 +8,19 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> <!-- link เลือก css-->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/font-awesome5/css/fontawesome-all.css">
     <link rel="stylesheet" href="include/CSS/styles.css?v=<?php echo filemtime('include/CSS/styles.css'); ?>"
         type=" text/css">
+    <link rel="icon" href="img\index\logo.png">
 
-    <!--
-
-    <link rel="stylesheet" href="include/CSS/cssLogin.css">
--->
-    <title>Document</title>
+    <title>เข้าสู่ระบบ</title>
 
     <?php
-    include('include/navber.php'); // เรียกใช่ไฟล์ include
+    include('include/navber.php');
     ?>
 </head>
+
 
 <body>
     <div class="container">
@@ -89,7 +87,7 @@ session_start();
             </div>
         </div>
     </div>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script> <!-- sc เลือก src -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/popper.js/dist/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>

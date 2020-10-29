@@ -1,25 +1,6 @@
 <?php
 require_once('php\condbbook.php');
-//$connect = mysqli_connect("localhost", "root", "", "testing");
-//$connect = mysqli_connect("localhost", "root", "", "shop");
-//$query = "SELECT * FROM producttype ORDER BY `Type_ID` DESC"; // แก้ที่อยู่
-//$result = mysqli_query($conn, $query);
 
-
-//$rowproduct = mysqli_fetch_array($resultproduct);
-/*
-echo '<pre>';
-//print_r($resultproduct);
-$rowproduct = mysqli_fetch_array($resultproduct);
-print_r($rowproduct);
-//echo $rowproduct["Type_Name"];
-
-while ($rowproduct = mysqli_fetch_array($resultproduct)) {
-    echo "<br>";
-    echo ($rowproduct["Product_ID"]);
-}
-echo '</pre>';
-*/
 
 
 
@@ -46,9 +27,7 @@ echo '</pre>';
     include('include\importcss.php');
     include('include\navber.php');
 
-    //echo '<pre>';
-    //print_r($_SESSION);
-    //echo '</pre>';
+
 
 
 
@@ -67,11 +46,11 @@ echo '</pre>';
 
         if (isset($_POST["updatecart"])) {
             if ($_POST["updatecart"] == "updatecart") {
-                //echo '1234';
+
                 $id = 0;
                 $dataquantity = 0;
 
-                // name="quantity<?php echo $quantity++ 
+
 
                 foreach ($_SESSION["shopping_cart"] as $keys => $values) {
                     if ($_SESSION["shopping_cart"][$keys]['item_id'] == $_POST["product_id" . $id++]) {
@@ -101,12 +80,12 @@ echo '</pre>';
 
 
     <?php
-    $id = 0; //1
-    $name = 0; //2
-    $price = 0; //3                                        
-    $quantity = 0; //4
-    $photo = 0; //5
-    $Balance = 0; //6
+    $id = 0;
+    $name = 0;
+    $price = 0;
+    $quantity = 0;
+    $photo = 0;
+    $Balance = 0;
 
 
 
@@ -147,7 +126,7 @@ echo '</pre>';
                                 foreach ($_SESSION["shopping_cart"] as $keys => $values) {
                             ?>
 
-                        <!-- PRODUCT -->
+
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-2 text-center">
                                 <img class="img-responsive" src="img\product\<?php echo $values['item_photo'] ?>"
@@ -182,17 +161,7 @@ echo '</pre>';
                                             value="<?php echo $values["item_Balance"] ?>">
                                         <input type="hidden" name="side_name<?php echo $i ?>"
                                             value="<?php echo $values["item_Balance"] ?>">
-                                        <!--
-                                        side_name
-                                        
-                                        $_POST["product_id" . $id++])
-                                                    'item_id'            =>    $_GET["id"],1
-                                                    'item_name'            =>    $_POST["hidden_name"],2
-                                                    'item_price'        =>    $_POST["hidden_price"],3
-                                                    'item_quantity'        =>    $_POST["quantity"],4
-                                                    'item_photo' =>     $_POST['hidden_photo'],5
-                                                    'item_Balance' =>     $_POST['hidden_Balance']6
-                                        -->
+
                                     </div>
                                 </div>
 
@@ -215,7 +184,7 @@ echo '</pre>';
                             }
 
                             ?>
-                        <!-- END PRODUCT -->
+
 
                         <div class=" text-right ml-3  " style="margin: 10px">
                             การสั่งซื้อ: <b><?php echo $sumquantity ?> รายการ</b>

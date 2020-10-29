@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="icon" href="img\index\logo.png">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <?php
-    include('include/importcss.php'); // เรียกใช่ไฟล์ include css
+    include('include/importcss.php');
     ?>
-    <title>HOME</title>
+    <title>จัดการสมาชิก</title>
 </head>
 
 <?php
@@ -19,22 +20,20 @@ $query = mysqli_query($conn, $sql);
 ?>
 <?php
 include('include/navber.php');
-// เรียกใช่ไฟล์ include navber
+
 
 
 ?>
 </head>
 
 <body>
-    <?php
-    //echo '<pre>', print_r($_POST), '</pre>';
-    ?>
+
 
     <div class="container-fluid py-5">
 
         <div class="card ">
             <div class="header py-3">
-                <h4 class="title text-center">Manage Admin</h4>
+                <h4 class="title text-center">จัดการสมาชิก</h4>
             </div>
             <div class="content">
                 <div class="content table-responsive table-full-width">
@@ -91,9 +90,7 @@ include('include/navber.php');
 
                     </table>
                 </div>
-                <?php
-                //include('Include/formAdmin.php');
-                ?>
+
             </div>
         </div>
     </div>
@@ -106,7 +103,7 @@ include('include/navber.php');
 
 
     <?php
-    include('include/importjavascript.php'); // เรียกใช่ไฟล์ include javascript
+    include('include/importjavascript.php');
     ?>
 </body>
 

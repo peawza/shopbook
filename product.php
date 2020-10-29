@@ -2,43 +2,13 @@
 
 
 
-
-
-
-
-
-
-
-
-
 require_once('php\condbbook.php');
-//$connect = mysqli_connect("localhost", "root", "", "testing");
-//$connect = mysqli_connect("localhost", "root", "", "shop");
-//$query = "SELECT * FROM producttype ORDER BY `Type_ID` DESC"; // แก้ที่อยู่
-//$result = mysqli_query($conn, $query);
-
-
-//$rowproduct = mysqli_fetch_array($resultproduct);
-/*
-echo '<pre>';
-//print_r($resultproduct);
-$rowproduct = mysqli_fetch_array($resultproduct);
-print_r($rowproduct);
-//echo $rowproduct["Type_Name"];
-
-while ($rowproduct = mysqli_fetch_array($resultproduct)) {
-    echo "<br>";
-    echo ($rowproduct["Product_ID"]);
-}
-echo '</pre>';
-*/
-
 
 
 ?>
 
 
-
+<link rel="icon" href="img\index\logo.png">
 
 
 <!DOCTYPE html>
@@ -47,17 +17,13 @@ echo '</pre>';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>สินค้า</title>
     <?php
 
     include('include\importcss.php');
     include('include\navber.php');
 
-    //print_r($_SESSION);
-    //$_SESSION['ses_php_var'] = $_GET['sendVal'];
-    //$_SESSION['ses_php_var'] = $_POST['sendVal'];
-    //$_SESSION['Typeid'] = $_POST['Typeid'];
-    //print_r($_POST);
+
     ?>
 </head>
 
@@ -72,15 +38,9 @@ echo '</pre>';
             <p>
                 <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
                     aria-expanded="false" aria-controls="collapseExample">
-                    เพิ่มสินค้าใหม่
+                    เพิ่มหนังสือใหม่
                 </a>
-                <!--
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
-                aria-expanded="false" aria-controls="collapseExample">
-                Button with data-target
-            </button>
 
-            -->
             </p>
         </div>
 
@@ -147,21 +107,21 @@ echo '</pre>';
                                 class="col-sm-2 col-form-label py-2">จำนวนวันที่ให้เช่าหนังสือ</label>
                             <div class="col-sm-5">
                                 <input type="number" class="form-control" id="rentday" step="1" name="rentday" min="1"
-                                    max='99999' placeholder="จำนวนสินค้า" required>
+                                    max='99999' placeholder="จำนวนวันที่ให้เช่า" required>
                             </div>
                             <label for="inputPassword" class="col-sm-2 col-form-label py-2">วัน</label>
                         </div>
 
 
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1" class="py-2">รายละเอียดสินค้า</label>
+                            <label for="exampleFormControlTextarea1" class="py-2">รายละเอียดหนังสือ</label>
                             <textarea class="form-control" id="detail" name="detail" rows="5"
-                                placeholder="รายละเอียดสินค้า" required></textarea>
+                                placeholder="รายละเอียดหนังสือ" required></textarea>
                         </div>
 
                         <div class="form-group row ">
 
-                            <label class="col-sm-1 py-2">รูปสินค้า</label>
+                            <label class="col-sm-1 py-2">รูปหนังสือ</label>
                             <div class="custom-file col-sm-5" data-callback=" PhotoChcallback">
                                 <input type="file" class="custom-file-input product-file" id="file"
                                     aria-describedby="inputGroupFileAddon01" name="file">
@@ -206,7 +166,7 @@ echo '</pre>';
             <?php
             ini_set('display_errors', 1);
             error_reporting(~0);
-            //echo $_POST;
+
             $strKeyword = null;
 
 
@@ -214,10 +174,10 @@ echo '</pre>';
 
             <form name="frmSearch" method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" <div
                 class="form-group row">
-                <label for="inputPassword" class="col-2 col-form-label py-2 ">ค้นหาชื่อสินค้า</label>
+                <label for="inputPassword" class="col-2 col-form-label py-2 ">ค้นหาชื่อหนังสือ</label>
                 <div class="col-7">
                     <input type="text" class="form-control" id="txtKeyword" name="txtKeyword"
-                        placeholder="ค้นหาชื่อสินค้า" maxlength="50" value="<?php echo $strKeyword; ?>">
+                        placeholder="ค้นหาชื่อหนังสือ" maxlength="50" value="<?php echo $strKeyword; ?>">
                 </div>
                 <div class="col-3">
                     <input class="btn btn-light" type="submit" value="Search">
@@ -227,23 +187,23 @@ echo '</pre>';
 
         <?php
         if (isset($_POST["txtKeyword"])) {
-            //echo $_POST["txtKeyword"];
+
             $strKeyword = $_POST["txtKeyword"];
             $keyword =  ($strKeyword);
-            //echo $keyword;
-            $selectproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Product_Name` LIKE '%" . $keyword . "%' ";
+
+            $selectproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Product_Name` LIKE '%" . $keyword . "%'  ORDER BY `product`.`Type_ID` ASC";
             $resultproduct = mysqli_query($conn, $selectproduct);
-            $selectproduct2 = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Product_Name` LIKE '%" . $keyword . "%' ";
+            $selectproduct2 = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` AND `product`.`Product_Name` LIKE '%" . $keyword . "%' ORDER BY `product`.`Type_ID` ASC ";
             $resultproduct2 = mysqli_query($conn, $selectproduct);
             $ckrow = mysqli_fetch_array($resultproduct2);
 
             if (!isset($ckrow)) {
 
-                //echo 'ไม่พบสินค้า';
+
         ?>
         <div class="col-7 text-center mx-auto ml-2">
             <div class="alert alert-danger alert-dismissible fade show " role="alert">
-                !!!! ไม่พบสินค้าที่ค้นหาในระบบ
+                !!!! ไม่พบหนังสือที่ค้นหาในระบบ
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -253,12 +213,12 @@ echo '</pre>';
 
         <?php
 
-                $selectproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` ORDER BY `product`.`Product_Name` ASC";
+                $selectproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID`  ORDER BY `product`.`Type_ID`";
                 $resultproduct = mysqli_query($conn, $selectproduct);
             }
         } else {
 
-            $selectproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID` ORDER BY `product`.`Product_Name` ASC";
+            $selectproduct = "SELECT * FROM `product`,`producttype` WHERE `product`.`Type_ID` = `producttype`.`Type_ID`  ORDER BY `product`.`Type_ID`";
             $resultproduct = mysqli_query($conn, $selectproduct);
         }
         ?>
@@ -277,11 +237,12 @@ echo '</pre>';
                 <table class="table table-bordered table-responsive-sm">
                     <thead>
                         <tr>
-                            <th width="25%" class="text-center">ชื่อสินค้า</th>
-                            <th width="15%" class="text-center">ประเภทสินค้า</th>
+                            <th width="12%" class="text-center"></th>
+                            <th width="18%" class="text-center">ชื่อสินค้า</th>
+                            <th width="10%" class="text-center">ประเภทสินค้า</th>
                             <th width="7%" class="text-center">ราคาซื้อหนังสือ</th>
                             <th width="7%" class="text-center">ราคาเช่า</th>
-                            <th width="15%" class="text-center">จำนวนคงเหลือ</th>
+                            <th width="7%" class="text-center">จำนวนคงเหลือ</th>
                             <th width="12%" class="text-center"></th>
                             <th width="12%" class="text-center"></th>
                             <th width="6%" class="text-center"></th>
@@ -293,30 +254,20 @@ echo '</pre>';
 
 
 
-                        /*        
-                        echo '<pre>';
-                        print_r($resultproduct);
-                        $rowproduct = mysqli_fetch_array($resultproduct);
-                        print_r($rowproduct);
-                        //echo $rowproduct["Type_Name"];
 
-                        while ($rowproduct = mysqli_fetch_array($resultproduct)) {
-                            echo "<br>";
-                            echo ($rowproduct["Product_ID"]);
-                        }
-                        echo '</pre>';
-
-                        */
 
                         while ($rowproduct = mysqli_fetch_array($resultproduct)) {
                         ?>
                         <tr>
+                            <th width="12%" class="text-center"><img class="img-responsive"
+                                    src="img\product\<?php echo $rowproduct["Product_Photo"] ?>"
+                                    alt="<?php echo $rowproduct["Product_Photo"] ?>" width="120" height="80"></th>
 
                             <th><?php echo $rowproduct["Product_Name"] ?></th>
                             <td><?php echo $rowproduct["Type_Name"] ?></td>
-                            <td><?php echo $rowproduct["product_buy"] ?></td>
-                            <td><?php echo $rowproduct["Product_Price"] ?></td>
-                            <td><?php echo $rowproduct["Product_Balance"] ?></td>
+                            <td class="text-right"><?php echo $rowproduct["product_buy"] ?></td>
+                            <td class="text-right"><?php echo $rowproduct["Product_Price"] ?></td>
+                            <td class="text-right"><?php echo $rowproduct["Product_Balance"] ?></td>
                             <td>
                                 <div class="mx-auto text-center">
                                     <input type="button" name="edit" value="รายละเอียด"
@@ -439,77 +390,7 @@ echo '</pre>';
 
                             </select>
                         </div>
-                        <?php
-                        /*  ปิดประเภทรับประกันสินค้า
-                        
-                        ?>
 
-                        <div class=" form-group row">
-                            <label for="exampleFormControlSelect1"
-                                class="py-2 col-sm-2">เลือกประเภทการรับประกันสินค้า</label>
-                            <select class="form-control col-sm-5 mx-3" id="warrantyproduct2" name="warrantyproduct2"
-                                required>
-                                <option value="" selected>กรุณาเลือกประเภทการรับประกันสินค้า</option>
-
-                                <?php
-                                $selectwarranty = "SELECT * FROM warranty";
-                                $resultwarranty = mysqli_query($conn, $selectwarranty);
-                                while ($rowwarranty = mysqli_fetch_array($resultwarranty)) { ?>
-                                <option value="<?php echo $rowwarranty["Warranty_ID"]; ?>">
-                                    <?php echo $rowwarranty["Warranty_Name"]; ?></option>
-
-                                <?php
-                                }
-                                ?>
-
-                            </select>
-                        </div>
-
-                        <?php
-                        */
-
-                        ?>
-
-                        <input type="hidden" name="warrantyproduct2" id="warrantyproduct2" value="4">
-
-
-
-                        <!--
-
-
-                         <div class=" form-group row">
-                            <label for="exampleFormControlSelect1" class="py-2 col-sm-2">สินค้า</label>
-                            <select class="form-control col-sm-5 mx-3" id="idproduct3" name="idproduct3" required>
-                                <option value="" selected>กรุณาเลือกประเภทการรับประกันสินค้า</option>
-
-                                <?php
-                                $selectwarranty = "SELECT * FROM product";
-                                $resultwarranty = mysqli_query($conn, $selectwarranty);
-                                while ($rowwarranty = mysqli_fetch_array($resultwarranty)) { ?>
-                                <option value="<?php echo $rowwarranty["Type_ID"]; ?>">
-                                    <?php echo $rowwarranty["Type_ID"]; ?></option>
-
-                                <?php
-                                }
-                                ?>
-
-                            </select>
-                        </div>
-
-                        <div class=" form-group row">
-                            <label for="exampleFormControlSelect1"
-                                class="py-2 col-sm-2">เลือกประเภทการรับประกันสินค้า</label>
-                            <select class="form-control col-sm-5 mx-3" id="warrantyproduct3" name="warrantyproduct3"
-                                required>
-                                <option value="" selected>กรุณาเลือกประเภทการรับประกันสินค้า</option>
-                                <option value="2" selected>123</option>
-                                <option value="4" selected>4533</option>
-                                <option value="5" selected>4455</option>
-                                <option value="6" selected>123456</option>
-
-                            </select>
-                        </div>
-                        -->
                         <div class="form-group row">
                             <label for="inputPassword" class="col-sm-2 col-form-label py-2">ราคาหนังสือที่ซื้อมา</label>
                             <div class="col-sm-5">
@@ -540,12 +421,12 @@ echo '</pre>';
 
                         <div class="form-group row">
                             <label for="inputPassword"
-                                class="col-sm-2 col-form-label py-2">จำนวนที่ให้เช่าหนังสือ</label>
+                                class="col-sm-2 col-form-label py-2">จำนวนวันที่ให้เช่าหนังสือ</label>
                             <div class="col-sm-5">
                                 <input type="number" class="form-control" id="rentday2" name="rentday2"
                                     placeholder="จำนวนสินค้า" required min="1" max="9999">
                             </div>
-                            <label for="inputPassword" class="col-sm-2 col-form-label py-2">เครื่อง</label>
+                            <label for="inputPassword" class="col-sm-2 col-form-label py-2">วัน</label>
                         </div>
 
 
@@ -566,20 +447,7 @@ echo '</pre>';
                 </form>
 
 
-                <!--
-                    <form method="post" id="update_form" action="php/update.php">
-                    <label>ชื่อสินค้า</label>
-                    <input type="text" name="name" id="name" class="form-control" />
-                    <br />
 
-                   <input type="hidden" name="product_ID" id="product_ID" />
-                    <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />
-                </form>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-                
-                    -->
             </div>
 
         </div>

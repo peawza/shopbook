@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="icon" href="img\index\logo.png">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-    include('include/importcss.php'); // เรียกใช่ไฟล์ include css
+    include('include/importcss.php');
     ?>
-    <title>Profile</title>
+    <title>ประวัติ</title>
     <?php
-    //session_start();
+
     require_once('php/condbbook.php');
     include('include/navber.php');
 
@@ -17,19 +18,16 @@
     if (!isset($_SESSION["ID"])) {
         header('location:index.php');
     }
-    //print_r($_SESSION);
-    $sql = "SELECT * FROM `user` WHERE `User_ID`= '" . $_SESSION["ID"] . "'"; // alt  + 96
+
+    $sql = "SELECT * FROM `user` WHERE `User_ID`= '" . $_SESSION["ID"] . "'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 
 
-    //echo $result->num_rows;
     if (!$result->num_rows) {
         header('location:index.php');
     }
-    //echo $_SESSION['Photo'];
 
-    //print_r($row);
     ?>
 </head>
 
@@ -89,15 +87,7 @@
                             <input type="email" class="form-control" id="email" name="email" disabled maxlength="30"
                                 value="<?php echo $row['User_Email']; ?> " placeholder="email@example.com">
                         </div>
-                        <?php
-                        /*>
-                        <label class="textprofile">ที่อยู่</label>
-                        <div class="from-group">
 
-                            <textarea class="form-control" name="address" id="address" cols="30" rows="10"
-                                disabled></textarea>
-                        </div>
-                        */ ?>
 
                 </form>
 
