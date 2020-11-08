@@ -3,7 +3,6 @@ require_once('../php/condbbook.php');
 if (isset($_POST["typeproduct_id"])) {
 
      $output = '';
-     //$connect = mysqli_connect("localhost", "root", "1234", "shop");
      $query = "SELECT * FROM producttype WHERE `Type_ID` = '" . $_POST["typeproduct_id"] . "'";
      $result = mysqli_query($connect, $query);
      $output .= '  

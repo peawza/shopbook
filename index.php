@@ -10,8 +10,9 @@ require_once('php\condbbook.php');
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/font-awesome5/css/fontawesome-all.css">
-    <link rel="icon" href="img\index\logo.png">
-    <link rel="stylesheet" href="include/CSS/styles.css?v=<?php echo filemtime('include/CSS/styles.css'); ?>" type=" text/css">
+    <link rel="icon" href="img/index/logo.png">
+    <link rel="stylesheet" href="include/CSS/styles.css?v=<?php echo filemtime('include/CSS/styles.css'); ?>"
+        type=" text/css">
     <title>ระบบร้านเช่าหนังสือ</title>
 </head>
 
@@ -65,75 +66,77 @@ require_once('php\condbbook.php');
     {
 
     ?>
-        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-            <h1 class="display-4"><?php echo ($tital) ?></h1>
-        </div>
-        <div class="container">
-            <div class="card-deck mb-3 text-center">
-                <?php
-                $connect = mysqli_connect("localhost", "root", "", "shopbook");
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4"><?php echo ($tital) ?></h1>
+    </div>
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+            <?php
+                include('phpsql\condbbookNs.php');
                 $resultproduct = mysqli_query($connect, $sql);
                 while ($row = mysqli_fetch_array($resultproduct)) {
 
                 ?>
 
 
-                    <div class="card mb-4 shadow-sm ">
-                        <div class="card-header">
-                            <div style="height: 50px">
-                                <?php
+            <div class="card mb-4 shadow-sm ">
+                <div class="card-header">
+                    <div style="height: 50px">
+                        <?php
                                 $len = strlen($row['Product_Name']);
                                 if ($len <= 30) {
                                 ?>
-                                    <h5 class="my-0 font-weight-normal"><?php echo $row['Product_Name'] ?></h5>
-                                    <br>
+                        <h5 class="my-0 font-weight-normal"><?php echo $row['Product_Name'] ?></h5>
+                        <br>
 
-                                <?php
+                        <?php
                                 }
                                 ?>
 
-                                <?php
+                        <?php
                                 $len = strlen($row['Product_Name']);
                                 if ($len > 30) {
                                 ?>
-                                    <h5 class="my-0 font-weight-normal"><?php echo $row['Product_Name'] ?></h5>
-                                <?php
+                        <h5 class="my-0 font-weight-normal"><?php echo $row['Product_Name'] ?></h5>
+                        <?php
                                 }
 
 
 
                                 ?>
-                            </div>
-
-
-                        </div>
-                        <div class="card-body">
-                            <a href="product_detail.php?id_product=<?php echo $row['Product_ID'] ?>">
-                                <img src="img\product\<?php echo $row['Product_Photo'] ?>" alt="Image" class="cardproductindex img-fluid" height="300" width="300">
-                            </a>
-                            <div style="height: 90px">
-                                <ul class="list-unstyled mt-3 mb-4">
-                                    <b>
-                                        <?php echo $row['Product_Name'] ?>
-                                    </b>
-                                    <li>เช่าได้ <?php echo $row['Product_rentday'] ?> วัน</li>
-                                    <li>ราคาเช่า <?php echo $row['Product_Price'] ?> บาท</li>
-
-                                </ul>
-
-                            </div>
-
-                            <a href="product_detail.php?id_product=<?php echo $row['Product_ID'] ?>" class="btn btn-lg btn-block btn-outline-primary">
-
-                                ดูรายละเอียด
-                            </a>
-                        </div>
                     </div>
 
-                <?php }
+
+                </div>
+                <div class="card-body">
+                    <a href="product_detail.php?id_product=<?php echo $row['Product_ID'] ?>">
+                        <img src="img\product\<?php echo $row['Product_Photo'] ?>" alt="Image"
+                            class="cardproductindex img-fluid" height="300" width="300">
+                    </a>
+                    <div style="height: 90px">
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <b>
+                                <?php echo $row['Product_Name'] ?>
+                            </b>
+                            <li>เช่าได้ <?php echo $row['Product_rentday'] ?> วัน</li>
+                            <li>ราคาเช่า <?php echo $row['Product_Price'] ?> บาท</li>
+
+                        </ul>
+
+                    </div>
+
+                    <a href="product_detail.php?id_product=<?php echo $row['Product_ID'] ?>"
+                        class="btn btn-lg btn-block btn-outline-primary">
+
+                        ดูรายละเอียด
+                    </a>
+                </div>
+            </div>
+
+            <?php }
                 ?>
 
-            </div>
+        </div>
 
         <?php
 
@@ -154,7 +157,7 @@ require_once('php\condbbook.php');
 
             <p class="float-right"><a href="#">Back to top</a></p>
         </footer>
-        </div>
+    </div>
 
 
 
@@ -163,9 +166,9 @@ require_once('php\condbbook.php');
 
 
 
-        <script src="node_modules/jquery/dist/jquery.min.js"></script>
-        <script src="node_modules/popper.js/dist/popper.min.js"></script>
-        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/popper.js/dist/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>
 
